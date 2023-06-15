@@ -64,14 +64,6 @@ int Player::getAttackStrength() const {
     return m_force+m_level;
 }
 
-void Ninja::addCoins(int coinAmount) {
-    this->Player::addCoins(coinAmount*2);
-}
 
-void Healer::heal(int points) {
-    this->Player::heal(points*2);
-}
 
-int Warrior::getAttackStrength() const {
-    return (this->Player::getAttackStrength()*2- this->getLevel());
-}
+

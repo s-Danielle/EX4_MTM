@@ -12,6 +12,7 @@
 #include "Player.h"
 using std::string;
 
+
 enum class BattleCardType {Gremlin, Witch, Dragon}; //the type of the battle card
 
 class Card{

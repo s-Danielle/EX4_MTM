@@ -106,64 +106,10 @@ private:
 
 };
 
-class Ninja : Player{
-public:
-    /**C'tor for Ninja
-     *
-     * @param name the name of the player
-     * creates new Ninja player with default values
-     */
-    explicit Ninja(const string& name) : Player(name) {};
-
-    Ninja& operator= (const Ninja&) =delete;
-    Ninja(const Ninja&) = default;
-    ~Ninja() override = default;
-    //adds double the regular amount of coins
-    void addCoins(int coinAmount) override;
-
-};
 
 
-class Healer : Player{
-public:
-    /**C'tor for Healer
-     *
-     * @param name the name of the player
-     * creates new Healer player with default values
-     */
-    explicit Healer(const string& name) : Player(name) {};
 
-    //Here we explicitly tell the compiler what defaults we wish to use
-    Healer& operator= (const Healer&) =delete;
-    Healer(const Healer&) = default;
-    ~Healer() override = default;
-    /*
-     * heals twice the amount given compared to other classes
-     */
-    void heal(int points) override;
-};
 
-class Warrior : Player{
-public:
-    /**C'tor for Warrior
-     *
-     * @param name the name of the player
-     * creates new Warrior player with default values
-     */
-    explicit Warrior(const string& name) : Player(name) {};
-    //Here we explicitly tell the compiler what defaults we wish to use
-    Warrior& operator= (const Warrior&) =delete;
-    Warrior(const Warrior&) = default;
-    ~Warrior() override = default;
-
-    /*
-     * @returns Warrior attack strength
-     * the above calculated to be the sum of players level and force points
-     * =(level+forcePoints*2)
-      */
-    int getAttackStrength() const override;
-
-};
 
 
 #endif //EX4_MTM_PLAYER_H
