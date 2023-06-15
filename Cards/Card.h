@@ -9,7 +9,7 @@
 #define EX4_MTM_CARD_H
 
 #include <string>
-#include "Player/Player.h"
+#include "../Players/Player.h"
 
 using std::string;
 

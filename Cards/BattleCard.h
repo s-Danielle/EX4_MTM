@@ -6,7 +6,7 @@
 #define EX4_MTM_BATTLECARD_H
 
 #include "Card.h"
-#include "../Player/Player.h"
+#include "../Players/Player.h"
 
 class BattleCard: public Card{
 private:
