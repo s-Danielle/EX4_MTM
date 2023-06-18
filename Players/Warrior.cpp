@@ -3,7 +3,10 @@
 //
 
 #include "Warrior.h"
-
+#include "../utilities.h"
 int Warrior::getAttackStrength() const {
     return (this->Player::getAttackStrength()*2- this->getLevel());
 }
+
+
+

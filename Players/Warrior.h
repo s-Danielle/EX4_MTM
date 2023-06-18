@@ -14,8 +14,10 @@ public:
      * creates new Warrior player with default values
      */
     explicit Warrior(const string& name) : Player(name) {};
+
+
     //Here we explicitly tell the compiler what defaults we wish to use
-    Warrior& operator= (const Warrior&) =delete;
+    Warrior& operator= (const Warrior&) =default;
     Warrior(const Warrior&) = default;
     ~Warrior() override = default;
 
@@ -25,6 +27,8 @@ public:
      * =(level+forcePoints*2)
       */
     int getAttackStrength() const override;
+
+    std::string getClass() const override;
 
 };
 

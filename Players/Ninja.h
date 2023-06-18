@@ -16,9 +16,15 @@ public:
      */
     explicit Ninja(const string& name) : Player(name) {};
 
-    Ninja& operator= (const Ninja&) =delete;
+    /*
+     * returns "Ninja"
+     */
+    std::string getClass() const override;
+
+    Ninja& operator=(const Ninja&) = default;
     Ninja(const Ninja&) = default;
     ~Ninja() override = default;
+
     //adds double the regular amount of coins
     void addCoins(int coinAmount) override;
 

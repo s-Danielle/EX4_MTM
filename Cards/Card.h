@@ -1,9 +1,7 @@
 //
 // Created by Daniella on 13/06/2023.
 //
-//TODO:
-//implement Card class and 6 card type subclasses(battle, Mana, Bar fight, Well, Treasure, Merchant)
-//create 3 subclasses for Battle(Gremlin,Witch,Dragon)
+
 
 #ifndef EX4_MTM_CARD_H
 #define EX4_MTM_CARD_H
@@ -13,86 +11,46 @@
 
 using std::string;
 
+/**
+ * CARD TYPES:
+ *
+ * MERCHANT-
+ *
+ * Treasure-
+ *
+ * Battle-
+ *
+ * Mana-
+ *
+ * Well-
+ *
+ * Well-
+ *
+ */
+enum class CardType {Battle, Mana, Merchant, Well, Treasure, BarFight }; //the type of the card
+/*
+ * this function converts a string to Card type
+ * if no match is found an exception is thrown
+ */
+CardType CardType(const string& type);
 
-enum class BattleCardType {Gremlin, Witch, Dragon}; //the type of the battle card
+
 
 class Card{
+protected:
+    std::string m_name;
+    explicit Card(const std::string& name=""): m_name(name){};
 public:
-    virtual void applyEncounter(const Player&)=0;
     /*
-   * Here we are explicitly telling the compiler to use the default methods
-  */
-    Card(const Card&) = default;
-    virtual ~Card() = default;
-    Card& operator=(const Card& other) = delete;
-    //TODO add operator <<
+     * handles the encounter with player
+     * each card has a different behavior
+     */
+    virtual void applyEncounter( Player&) const=0;
+    friend std::ostream& operator<<(std::ostream& os, const Card& card);
+    static Card* creatNewCard(string name);
+
+    //Here we are explicitly telling the compiler to use the default/delete methods:
+    virtual ~Card()=default;
 };
 
-
-
-
-class Merchant: public Card{
-public:
-    explicit Merchant();
-    /*
-    * Handling the player's applyEncounter with the card:
-    *
-    * @param player - The player.
-    * @return
-    *      void
-   */
-    void applyEncounter(const Player&) override;
-};
-
-class Treasure: public Card{
-public:
-    explicit Treasure();
-    /*
-    * Handling the player's applyEncounter with the card:
-    *
-    * @param player - The player.
-    * @return
-    *      void
-   */
-    void applyEncounter(const Player&) override;
-};
-
-class ManaCard: public Card{
-public:
-    explicit ManaCard();
-    /*
-    * Handling the player's applyEncounter with the card:
-    *
-    * @param player - The player.
-    * @return
-    *      void
-   */
-    void applyEncounter(const Player&) override;
-};
-
-class Well: public Card{
-public:
-    explicit Well();
-    /*
-    * Handling the player's applyEncounter with the card:
-    *
-    * @param player - The player.
-    * @return
-    *      void
-   */
-    void applyEncounter(const Player&) override;
-};
-
-class BarFight: public Card{
-public:
-    explicit BarFight();
-    /*
-    * Handling the player's applyEncounter with the card:
-    *
-    * @param player - The player.
-    * @return
-    *      void
-   */
-    void applyEncounter(const Player&) override;
-};
 #endif //EX4_MTM_CARD_H

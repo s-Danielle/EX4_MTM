@@ -14,22 +14,21 @@ using std::string;
 #define DEFAULT_COINS 10
 #define DEFAULT_FORCE_POINTS 5
 
+/**
+ * Player Type
+ */
+enum class PlayerType {Ninja, Warrior, Healer};
+
+/**
+ * converts string to PlayerType
+ * @param strType string that contains the requested class
+ * @return Player type variable
+ * throws invalid type if no strings match
+ */
+PlayerType PlayerType(const string& strType);
 
 class Player {
 public:
-    /**
-     * C'tor of Player class
-     *
-     * @param name  - the name of the player -//TODO handle invalid input
-     * creates new player with default values
-     */
-    explicit Player(const string& name);
-
-
-    /*
-     * Prints player info USING THE utilities.h function
-     */
-    virtual void printInfo() const; //TODO implement as operator >>
 
     /*
      * Increases player level by 1 up to level 10
@@ -80,6 +79,15 @@ public:
      */
     bool pay(int price);
 
+    /**
+     *
+     * @param playerType use PlayerType(string type) to convert string to enum- safe use as it throws an exception
+     * @param playerName expected to be valid - up to caller to check the string to match requirements!
+     * @return a pointer to a new player of the correct type on the heap
+     * caller is responsible to delete data
+     */
+    static Player* CreateNewPlayer(enum PlayerType playerType, string &playerName);
+
 
     /*
      * @returns player attack strength
@@ -88,15 +96,48 @@ public:
      */
     virtual int getAttackStrength() const;
 
+    /*
+     *@returns player name
+     */
+    string getName() const;
+
+    /*
+     *@returns player class
+     */
+    virtual string getClass() const=0;
+
+    /*
+     * returns player coins
+     */
+    int getCoins() const;
+   /*
+    * prints player details using utilities.h
+    */
+
+
+
+   friend std::ostream& operator<<(std::ostream& os, const Player& player);
+
 
     /*
     * Here we are explicitly telling the compiler to use the default/delete methods
     */
-    Player& operator = (const Player&) = delete; // ??
+    Player& operator = (const Player&) = default; // ??
     Player(const Player&) = default;
     virtual ~Player() = default;
 
-private:
+protected:
+    /**
+     * C'tor of Player class
+     *
+     * @param name  - the name of the player -//TODO handle invalid input
+     * creates new player with default values
+     */
+    explicit Player(const string& name) :
+            m_name(name), m_level(1),
+            m_force(DEFAULT_FORCE_POINTS),
+            m_currentHealth(DEFAULT_MAX_HP),
+            m_coins(DEFAULT_COINS){};
 
     string m_name; // consists only of english letters, max 15 chars
     int m_level; //range 1-10
@@ -105,11 +146,6 @@ private:
     int m_coins; //non-negative
 
 };
-
-
-
-
-
 
 
 #endif //EX4_MTM_PLAYER_H
