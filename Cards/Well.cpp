@@ -6,10 +6,5 @@
 #include "../utilities.h"
 
 void Well::applyEncounter(Player &player) const {
-    printWellMessage(player.getClass()=="Ninja");
-    if(player.getClass()=="Ninja"){
-        return;
-    }
-    player.damage(10);
+   player.encounterWell();
 }
-

@@ -28,7 +28,6 @@ public:
       */
     int getAttackStrength() const override;
 
-    std::string getClass() const override;
 
 };
 

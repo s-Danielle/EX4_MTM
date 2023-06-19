@@ -7,6 +7,7 @@
 #include "Ninja.h"
 #include "Warrior.h"
 #include "Healer.h"
+#include "../Cards/Card.h"
 
 enum PlayerType PlayerType(const string& type){
     if(type=="Ninja"){
@@ -26,8 +27,8 @@ string Player::getName() const {
 }
 
 
-std::ostream& operator<<(std::ostream& os, const Player& player){
-    printPlayerDetails(os,player.m_name,player.getClass(),
+std::ostream& operator<<(std::ostream& os, const Player& player){//TODO move this
+    printPlayerDetails(os,player.m_name,"HOW DO I DO THIS WHITHOUT GET TYPE",
                        player.m_level, player.getAttackStrength(),
                        player.m_currentHealth,
                        player.m_coins);
@@ -83,9 +84,21 @@ bool Player::pay(int price) {
     return true;
 }
 
-std::string Warrior::getClass() const{
-    return "Warrior";
+void Player::encounterBarFight() {
+    printBarfightMessage(false);
+    damage(10);
 }
+
+void Player::encounterMana() {
+    printManaMessage(false);
+    //do nothing
+}
+
+void Player::encounterWell() {
+    printWellMessage(false);
+    damage(10);
+}
+
 
 int Player::getAttackStrength() const {
     return m_force+m_level;

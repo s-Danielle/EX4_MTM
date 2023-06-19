@@ -19,7 +19,7 @@ public:
     /*
      * returns "Ninja"
      */
-    std::string getClass() const override;
+    void encounterWell() override;
 
     Ninja& operator=(const Ninja&) = default;
     Ninja(const Ninja&) = default;

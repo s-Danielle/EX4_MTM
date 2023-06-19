@@ -13,7 +13,7 @@ public:
     /*
      * C'tor
      */
-    Barfight(): Card("Barfight"){};
+    explicit Barfight(): Card("Barfight"){};
 
     /*
      *
@@ -23,7 +23,7 @@ public:
     //Here we are explicitly telling the compiler to use the default/delete methods
     Barfight(const Barfight&)=default;
     Barfight& operator=(const Barfight&) = default;
-    ~Barfight()=default;
+    ~Barfight() override=default;
 };
 
 

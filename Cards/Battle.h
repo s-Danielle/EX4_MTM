@@ -6,46 +6,52 @@
 #define EX4_MTM_BATTLE_H
 
 
+#include <map>
+
 #include "Card.h"
 using std::string;
 
 enum class MonsterType {Dragon, Witch, Gremlin }; //the type of the Monster
 MonsterType  MonsterType(const string& type);
 
-class Battle: public Card{
-protected:
-    string m_name;
+
+struct cardStats{
     int m_force;
     int m_damage;
     int m_loot;
-    Battle(const string &name, int force, int damage, int loot):
-           Card(name),
-           m_name(name),
-           m_force(force),
-           m_damage(damage),
-           m_loot(loot){};
-public:
+}typedef cardStats;
 
+
+
+class Battle: public Card{
+protected:
+    cardStats m_stats;
     /**
      * C'tor of battle Card
      * @param type use BattleCard(string type) for safe use- will throw exception
      * returns new instance
      */
-    explicit Battle(const std::string& name);
-
+    Battle(const string &name, cardStats stats):
+           Card(name),
+           m_stats(stats){};
+public:
     /**
-     *
+     *handles the fight encounter-
+     * if player force is lesser than monster force player will lose
+     * on Win-player will gain loot
+     * on Loss-player will receive damage
      */
     void applyEncounter(Player &)  const override;
 
     friend std::ostream& operator<<(std::ostream& os, const Battle& card);
     //TODO i can't override here are we sure its gonna choose this function? ^
+
     /*
-     * Here we tell the compiler to use default functions:
+     * Here we tell the compiler to use default/delete functions:
      */
-    Battle& operator=(const Battle&)=default;
-    Battle(const Battle&)=default;
-    ~Battle()=default;
+    Battle& operator=(const Battle&)=delete;
+    Battle(const Battle&)=delete;
+    ~Battle() override=default;
 };
 
 

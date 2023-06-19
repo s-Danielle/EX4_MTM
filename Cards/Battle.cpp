@@ -19,32 +19,23 @@ enum MonsterType MonsterType(const string& type){
 
 }
 
-Battle::Battle(const std::string& name): Card(name) {
-    enum MonsterType type=MonsterType(name);
-    switch (type) {
-        case MonsterType::Witch:
-            *this=Battle("Witch",12,10,3);
-        case MonsterType::Dragon:
-            *this=Battle("Dragon",25,DEFAULT_MAX_HP,1000);
-        case MonsterType::Gremlin:
-            *this=Battle("Gremlin",7,10,3);
-    }
-}
 
 void Battle::applyEncounter( Player & player) const {
 
-    if(player.getAttackStrength()<m_force){
-        player.damage(m_damage);
+    if(player.getAttackStrength()<m_stats.m_force){
+        player.damage(m_stats.m_damage);
         printLossBattle(player.getName(),m_name);
     }
     else{
-        player.addCoins(m_loot);
+        player.addCoins(m_stats.m_loot);
         printWinBattle(player.getName(),m_name);
     }
 }
 
 std::ostream& operator<<(std::ostream& os, const Battle& card){
-    printMonsterDetails(os,card.m_force,card.m_damage, card.m_loot,card.m_name=="Dragon");
+    printMonsterDetails(os,card.m_stats.m_force,card.m_stats.m_damage, card.m_stats.m_loot);
     //TODO check if i need print end of card
+    //I need to override this somehow ??
     return os;
 }
+

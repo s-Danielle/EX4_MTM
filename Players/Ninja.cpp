@@ -9,6 +9,7 @@ void Ninja::addCoins(int coinAmount) {
     this->Player::addCoins(coinAmount*2);
 }
 
-std::string Ninja::getClass() const {
-    return "Ninja";
+void Ninja::encounterWell() {
+    printWellMessage(true);
+//Do nothing
 }

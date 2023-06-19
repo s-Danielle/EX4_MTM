@@ -11,7 +11,7 @@ public:
     /*
      * C'tor
      */
-    Well(): Card(){};
+    explicit Well(): Card("Well"){};
 
     /*
      *damages 10 points unless Ninja player
@@ -21,7 +21,7 @@ public:
     //Here we are explicitly telling the compiler to use the default/delete methods
     Well(const Well&)=default;
     Well& operator=(const Well&) = default;
-    ~Well()=default;
+    ~Well() override=default;
 };
 
 #endif //EX4_MTM_WELL_H

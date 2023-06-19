@@ -12,7 +12,7 @@ public:
     /*
      * C'tor
      */
-    Mana(): Card(){};
+    explicit Mana(): Card("Mana"){};
 
     /**
      *if player is healer class this card allows him to heal 10 points
@@ -20,11 +20,10 @@ public:
     void applyEncounter(Player &) const override;
 
 
-
     //Here we are explicitly telling the compiler to use the default/delete methods
     Mana(const Mana&)=default;
     Mana& operator=(const Mana&) = default;
-    ~Mana()=default;
+    ~Mana() override=default;
 };
 
 

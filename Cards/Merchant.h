@@ -12,8 +12,7 @@ public:
     /*
      * C'tor
      */
-    Merchant(): Card(){};
-
+    explicit Merchant(): Card("Merchant"){};
 
     /*
      *
@@ -23,7 +22,7 @@ public:
     //Here we are explicitly telling the compiler to use the default/delete methods
     Merchant(const Merchant&)=default;
     Merchant& operator=(const Merchant&) = default;
-    ~Merchant()=default;
+    ~Merchant() override=default;
 };
 
 

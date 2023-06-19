@@ -7,6 +7,7 @@
 #define EX4_MTM_CARD_H
 
 #include <string>
+#include <map>
 #include "../Players/Player.h"
 
 using std::string;
@@ -27,27 +28,38 @@ using std::string;
  * Well-
  *
  */
-enum class CardType {Battle, Mana, Merchant, Well, Treasure, BarFight }; //the type of the card
-/*
- * this function converts a string to Card type
- * if no match is found an exception is thrown
- */
-CardType CardType(const string& type);
-
-
 
 class Card{
 protected:
     std::string m_name;
-    explicit Card(const std::string& name=""): m_name(name){};
+
+    explicit Card(const std::string& name): m_name(name){};
 public:
+    typedef Card* (*createFunction)();
+    /**
+     *
+     * initializes the factory map
+     */
+    static std::map<std::string, createFunction>& GetCardMap();
+    /**
+     *
+     * @param name -name of the requested card
+     * @return pointer to the new card
+     * user is responsible to delete object
+     * in case of invalid string throws exception
+     */
+     static Card* createFromString(const std::string& name);
+
     /*
      * handles the encounter with player
      * each card has a different behavior
      */
     virtual void applyEncounter( Player&) const=0;
+
+    /*
+     * TODO figure hoe to print
+     */
     friend std::ostream& operator<<(std::ostream& os, const Card& card);
-    static Card* creatNewCard(string name);
 
     //Here we are explicitly telling the compiler to use the default/delete methods:
     virtual ~Card()=default;

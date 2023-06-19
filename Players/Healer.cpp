@@ -9,7 +9,7 @@ void Healer::heal(int points) {
     this->Player::heal(points*2);
 }
 
-
-std::string Healer::getClass() const {
-    return "Healer";
+void Healer::encounterMana() {
+    printManaMessage(true);
+    heal(10);
 }

@@ -102,11 +102,6 @@ public:
     string getName() const;
 
     /*
-     *@returns player class
-     */
-    virtual string getClass() const=0;
-
-    /*
      * returns player coins
      */
     int getCoins() const;
@@ -114,6 +109,20 @@ public:
     * prints player details using utilities.h
     */
 
+   /*
+    * Player falls into Well
+    */
+   virtual void encounterWell();
+
+    /*
+    * Player gets into bar fight
+    */
+    virtual void encounterBarFight();
+
+    /*
+   * Player falls into Well
+   */
+    virtual void encounterMana();
 
 
    friend std::ostream& operator<<(std::ostream& os, const Player& player);

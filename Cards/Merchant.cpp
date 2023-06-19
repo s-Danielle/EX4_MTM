@@ -51,3 +51,5 @@ void Merchant::applyEncounter(Player &player) const {
             return;
     }
 }
+
+

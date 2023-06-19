@@ -10,10 +10,10 @@ public:
     /*
      * C'tor
      */
-    Treasure(): Card(){};
+    explicit Treasure(): Card("Treasure"){};
 
     /*
-     *
+     *handles encounter-player gets 10 coins
      */
     void applyEncounter( Player&) const override;
 

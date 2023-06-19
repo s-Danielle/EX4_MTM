@@ -6,9 +6,6 @@
 #include "../utilities.h"
 
 void Barfight::applyEncounter(Player &player) const {
-    if(player.getClass()=="Warrior"){
-        return;
-    }
-    player.damage(10);
+    return player.encounterBarFight();//handles prints
 }
 

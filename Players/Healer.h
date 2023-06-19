@@ -17,7 +17,7 @@ public:
     /*
      * returns "Healer"
      */
-    std::string getClass() const override;
+     void encounterMana() override;
 
     //Here we explicitly tell the compiler what defaults we wish to use
     Healer& operator= (const Healer&) =default;
