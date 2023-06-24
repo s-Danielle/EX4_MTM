@@ -9,7 +9,7 @@ void Ninja::addCoins(int coinAmount) {
     this->Player::addCoins(coinAmount*2);
 }
 
-void Ninja::encounterWell() {
+void Ninja::encounterWell() {   //override??
     printWellMessage(true);
 //Do nothing
 }

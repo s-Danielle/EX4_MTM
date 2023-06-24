@@ -17,7 +17,7 @@ using std::string;
 /**
  * Player Type
  */
-enum class PlayerType {Ninja, Warrior, Healer}; //why enum???
+enum class PlayerType {Ninja, Warrior, Healer}; //why enum class???
 
 /**
  * converts string to PlayerType
