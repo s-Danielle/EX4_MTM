@@ -1,6 +1,6 @@
 Dragon
 Well
-Barfight
+BarFight
 Mana
 Gremlin
 Witch
