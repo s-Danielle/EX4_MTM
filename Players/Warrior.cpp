@@ -4,9 +4,22 @@
 
 #include "Warrior.h"
 #include "../utilities.h"
+
 int Warrior::getAttackStrength() const {
     return (this->Player::getAttackStrength()*2- this->getLevel());
 }
 
+void Warrior::encounterBarFight() {
+    printBarfightMessage(true);
+}
 
+std::ostream &Warrior::print(std::ostream &os) const {
+    printPlayerDetails(os,
+                       this->m_name,"Warrior",
+                       this->m_level,
+                       this->getAttackStrength(),
+                       this->m_currentHealth,
+                       this->m_coins);
+    return os;
+}
 

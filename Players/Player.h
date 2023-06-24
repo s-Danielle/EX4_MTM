@@ -25,7 +25,7 @@ enum class PlayerType {Ninja, Warrior, Healer};
  * @return Player type variable
  * throws invalid type if no strings match
  */
-PlayerType PlayerType(const string& strType);
+PlayerType PlayerType(const string& type);
 
 class Player {
 public:
@@ -125,9 +125,15 @@ public:
     virtual void encounterMana();
 
 
-   friend std::ostream& operator<<(std::ostream& os, const Player& player);
+    /*
+     * default printing function
+     */
+    virtual std::ostream& print(std::ostream& os) const =0;
 
-
+    /*
+     * overloading >> operator
+     */
+    friend std::ostream& operator>>(std::ostream& os, const Player& player);
     /*
     * Here we are explicitly telling the compiler to use the default/delete methods
     */

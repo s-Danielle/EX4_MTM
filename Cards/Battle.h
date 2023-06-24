@@ -43,12 +43,12 @@ public:
      */
     void applyEncounter(Player &)  const override;
 
-    friend std::ostream& operator<<(std::ostream& os, const Battle& card);
-    //TODO i can't override here are we sure its gonna choose this function? ^
+    virtual std::ostream& print(std::ostream& os) const override;
 
     /*
      * Here we tell the compiler to use default/delete functions:
      */
+
     Battle& operator=(const Battle&)=delete;
     Battle(const Battle&)=delete;
     ~Battle() override=default;

@@ -21,10 +21,15 @@ public:
 
     /**
      * C'tor
-     * @param name card name
      * new instance of Dragon Card
      */
     explicit Dragon(): Battle("Dragon", m_DragonStats()){};
+
+
+    /*
+     *overriding print function
+     */
+    std::ostream& print(std::ostream& os) const override;
 
     /*
      * Here we tell the compiler to use default/delete functions:

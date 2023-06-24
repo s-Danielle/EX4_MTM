@@ -10,6 +10,7 @@
 #include <map>
 #include "../Players/Player.h"
 
+
 using std::string;
 
 /**
@@ -33,22 +34,14 @@ class Card{
 protected:
     std::string m_name;
 
+    /**
+     * C'tor
+     * @param name
+     */
     explicit Card(const std::string& name): m_name(name){};
 public:
-    typedef Card* (*createFunction)();
-    /**
-     *
-     * initializes the factory map
-     */
-    static std::map<std::string, createFunction>& GetCardMap();
-    /**
-     *
-     * @param name -name of the requested card
-     * @return pointer to the new card
-     * user is responsible to delete object
-     * in case of invalid string throws exception
-     */
-     static Card* createFromString(const std::string& name);
+
+    Card* createNewCard(const string& type);
 
     /*
      * handles the encounter with player
@@ -57,12 +50,38 @@ public:
     virtual void applyEncounter( Player&) const=0;
 
     /*
-     * TODO figure hoe to print
+     * default print function
      */
-    friend std::ostream& operator<<(std::ostream& os, const Card& card);
+    virtual std::ostream& print(std::ostream& os) const;
 
     //Here we are explicitly telling the compiler to use the default/delete methods:
+    Card& operator=(Card&)=delete;
+    Card(Card&)=default;
     virtual ~Card()=default;
+
+
+    //overloading operator >>
+    friend std::ostream& operator>>(std::ostream& os, const Card& card);
 };
 
 #endif //EX4_MTM_CARD_H
+
+
+
+
+
+////typedef for map:
+//typedef Card* (*createFunction)();
+///**
+// *
+// * initializes the factory map
+// */
+//static std::map<std::string, createFunction>& GetCardMap();
+///**
+// *
+// * @param name -name of the requested card
+// * @return pointer to the new card
+// * user is responsible to delete object
+// * in case of invalid string throws exception
+// */
+//static Card* createFromString(const std::string& name);

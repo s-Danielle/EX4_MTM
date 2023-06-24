@@ -16,18 +16,25 @@ public:
      */
     explicit Ninja(const string& name) : Player(name) {};
 
-    /*
-     * returns "Ninja"
-     */
-    void encounterWell() override;
-
+    //Here we tell the compiler to use defaults:
     Ninja& operator=(const Ninja&) = default;
     Ninja(const Ninja&) = default;
     ~Ninja() override = default;
 
-    //adds double the regular amount of coins
-    void addCoins(int coinAmount) override;
+    /*
+     * handles well encounter for ninja
+     */
+    void encounterWell() override;
 
+    /*
+     *adds double the regular amount of coins
+    */
+     void addCoins(int coinAmount) override;
+
+     /*
+      * print function
+      */
+     std::ostream& print(std::ostream& os) const override;
 };
 
 

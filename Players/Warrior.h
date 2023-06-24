@@ -28,7 +28,16 @@ public:
       */
     int getAttackStrength() const override;
 
+    /*
+     * handles barfight encounter for Warrior
+     */
+    void encounterBarFight() override;
 
+
+    /*
+     * print function
+     */
+    std::ostream& print(std::ostream& os) const override;
 };
 
 

@@ -15,7 +15,7 @@ public:
      */
     explicit Healer(const string& name) : Player(name) {};
     /*
-     * returns "Healer"
+     * hsndles Mana encounter for healer
      */
      void encounterMana() override;
 
@@ -28,6 +28,12 @@ public:
      * heals twice the amount given compared to other classes
      */
     void heal(int points) override;
+
+    /*
+     * print function
+     */
+    std::ostream& print(std::ostream& os) const override;
+
 };
 
 

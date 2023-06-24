@@ -3,10 +3,17 @@
 //
 
 #include "Dragon.h"
+#include "../utilities.h"
+
 cardStats Dragon::m_DragonStats() {
     cardStats stats;
     stats.m_loot=DRAGON_LOOT;
     stats.m_damage=DEFAULT_MAX_HP;
     stats.m_force=DRAGON_FORCE;
     return stats;
+}
+
+std::ostream &Dragon::print(std::ostream &os) const {
+    printMonsterDetails(os,this->m_stats.m_force,this->m_stats.m_damage, this->m_stats.m_loot, true);
+    return os;
 }

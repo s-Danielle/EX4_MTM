@@ -5,20 +5,6 @@
 #include "Battle.h"
 #include "../utilities.h"
 
-enum MonsterType MonsterType(const string& type){
-    if (type=="Witch"){
-        return MonsterType::Witch;
-    }
-    if (type=="Gremlin"){
-        return MonsterType::Gremlin;
-    }
-    if (type=="Dragon"){
-        return MonsterType::Dragon;
-    }
-    throw std::exception();//TODO throw the right exception here
-
-}
-
 
 void Battle::applyEncounter( Player & player) const {
 
@@ -32,10 +18,7 @@ void Battle::applyEncounter( Player & player) const {
     }
 }
 
-std::ostream& operator<<(std::ostream& os, const Battle& card){
-    printMonsterDetails(os,card.m_stats.m_force,card.m_stats.m_damage, card.m_stats.m_loot);
-    //TODO check if i need print end of card
-    //I need to override this somehow ??
+std::ostream &Battle::print(std::ostream &os) const {
+    printMonsterDetails(os,this->m_stats.m_force,this->m_stats.m_damage, this->m_stats.m_loot);
     return os;
 }
-
