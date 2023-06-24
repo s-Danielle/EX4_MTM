@@ -85,7 +85,7 @@ void printMerchantInsufficientCoins(std::ostream &os);
 void printMonsterDetails(std::ostream &os, int force, int damage, int coins, bool isDragon = false);
 
 /*
- * Prints outcome summary of encountering the BarFight card:
+ * Prints outcome summary of encountering the Well card:
  
  * @param isWarrior - Indicates weither the player who encountered this card is a Warrior or not.
  * @return
