@@ -55,13 +55,13 @@ public:
     virtual std::ostream& print(std::ostream& os) const;
 
     //Here we are explicitly telling the compiler to use the default/delete methods:
-    Card& operator=(Card&)=delete;
-    Card(Card&)=default;
+    Card& operator=(const Card&)=default;
+    Card(const Card&)=default;
     virtual ~Card()=default;
 
 
     //overloading operator >>
-    friend std::ostream& operator>>(std::ostream& os, const Card& card);
+    friend std::ostream& operator<<(std::ostream& os, const Card& card);
 };
 
 #endif //EX4_MTM_CARD_H

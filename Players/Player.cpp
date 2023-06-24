@@ -116,6 +116,7 @@ Player *Player::CreateNewPlayer(enum PlayerType playerType, string &playerName) 
 }
 
 
-std::ostream& operator>>(std::ostream& os,const Player& player){
+std::ostream& operator<<(std::ostream& os,const Player& player) {
     player.print(os);
     return os;
+}

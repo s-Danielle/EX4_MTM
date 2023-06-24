@@ -133,7 +133,7 @@ public:
     /*
      * overloading >> operator
      */
-    friend std::ostream& operator>>(std::ostream& os, const Player& player);
+    friend std::ostream& operator<<(std::ostream& os, const Player& player);
     /*
     * Here we are explicitly telling the compiler to use the default/delete methods
     */
