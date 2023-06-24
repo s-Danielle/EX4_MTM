@@ -35,7 +35,7 @@ protected:
 
     explicit Card(const std::string& name): m_name(name){};
 public:
-    typedef Card* (*createFunction)();
+    typedef Card* (*createFunction)(); //TODO: what is this???
     /**
      *
      * initializes the factory map
