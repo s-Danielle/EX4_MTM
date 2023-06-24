@@ -10,14 +10,14 @@
 #include <string>
 using std::string;
 
-#define DEFAULT_MAX_HP 100
+#define DEFAULT_MAX_HP 100  //TODO: this is not how we define constants in c++!!!!
 #define DEFAULT_COINS 10
 #define DEFAULT_FORCE_POINTS 5
 
 /**
  * Player Type
  */
-enum class PlayerType {Ninja, Warrior, Healer};
+enum class PlayerType {Ninja, Warrior, Healer}; //why enum class???
 
 /**
  * converts string to PlayerType
@@ -137,7 +137,7 @@ public:
     /*
     * Here we are explicitly telling the compiler to use the default/delete methods
     */
-    Player& operator = (const Player&) = default; // ??
+    Player& operator = (const Player&) = default; // ?? wtf is this
     Player(const Player&) = default;
     virtual ~Player() = default;
 
