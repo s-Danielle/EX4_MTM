@@ -17,6 +17,10 @@
 using std::string;
 
 Card *Card::createNewCard(const std::string &type) {
+    /**this is basically a factory method. maybe we should consider making it its own class/header.
+     * see my note on return value.
+     * the map idea was good. i hate this course so much.
+     */
     if (type == "Barfight") {
         return new Barfight();
     }
@@ -41,10 +45,12 @@ Card *Card::createNewCard(const std::string &type) {
     if (type=="Treasure") {
         return new Treasure();
     }
-    throw std::exception();//TODO specify
+    throw std::exception();//TODO: return nullptr/new dedicated exception ( mtmchkin throws 'invalid format', needs to know the line number)
 }
 
 std::ostream &Card::print(std::ostream &os) const {
+    /**the way i see it, this function should really be static to this file,
+     * and not part of the 'Card' interface*/
     printCardDetails(os, this->m_name);
     return os;
 }

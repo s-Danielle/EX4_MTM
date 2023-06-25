@@ -52,7 +52,7 @@ public:
     /*
      * default print function
      */
-    virtual std::ostream& print(std::ostream& os) const;
+    virtual std::ostream& print(std::ostream& os) const;    //why public?, why not static in cpp?
 
     //Here we are explicitly telling the compiler to use the default/delete methods:
     Card& operator=(const Card&)=default;

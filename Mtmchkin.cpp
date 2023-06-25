@@ -16,4 +16,11 @@ static queue<unique_ptr<Card>> createDeck(const std::string &filename){
 	if(!file.is_open()){
 		throw DeckFileNotFound();
 	}
+	queue<unique_ptr<Card>> deck;
+	std::string line;
+	int lineNum = 0;
+	while(std::getline(file, line)){
+		lineNum++;
+		deck
+	}
 }

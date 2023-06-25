@@ -9,6 +9,7 @@
 #include "Healer.h"
 
 enum PlayerType PlayerType(const string& type){
+    //TODO: the whole enum thing is a bit weird. why not just use a string?
     if(type=="Ninja"){
         return PlayerType::Ninja;
     }
@@ -18,7 +19,7 @@ enum PlayerType PlayerType(const string& type){
     if(type=="Warrior"){
         return PlayerType::Warrior;
     }
-    throw std::exception();//TODO throw exception
+    throw std::exception();//TODO: throw exception, maybe create a new one for this
 }
 
 string Player::getName() const {
@@ -95,6 +96,9 @@ int Player::getAttackStrength() const {
 
 
 Player *Player::CreateNewPlayer(enum PlayerType playerType, string &playerName) {
+    //kinda cluncky tbh. i really liked the map idea. either way, this is a factory method.
+    //TODO: maybe make it its own class/header?
+    //why not just use a string?, why not just 'return new Warrior(playerName);'?
     Player* newPlayer;
     switch (playerType) {
         case PlayerType::Warrior :{
