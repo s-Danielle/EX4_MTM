@@ -8,21 +8,25 @@
 #include "Warrior.h"
 #include "Healer.h"
 
-enum PlayerType PlayerType(const string& type){
-    //TODO: the whole enum thing is a bit weird. why not just use a string?
-    if(type=="Ninja"){
-        return PlayerType::Ninja;
-    }
-    if(type=="Healer"){
-        return PlayerType::Healer;
-    }
-    if(type=="Warrior"){
-        return PlayerType::Warrior;
-    }
-    throw std::exception();//TODO: throw exception, maybe create a new one for this
+bool nameCheck(const std::string& name){
+    bool check =name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") ==
+                std::string::npos;
+    check = check && name.length()<=15;
+    return check;
 }
 
-string Player::getName() const {
+Player::Player(const std::string &name)  :
+        m_name(name), m_level(1),
+        m_force(DEFAULT_FORCE_POINTS),
+        m_currentHealth(DEFAULT_MAX_HP),
+        m_coins(DEFAULT_COINS){
+    if(!nameCheck(name)){
+        throw std::exception();//TODO: specify
+    }
+}
+
+
+std::string Player::getName() const {
     return m_name;
 }
 
@@ -95,27 +99,18 @@ int Player::getAttackStrength() const {
 }
 
 
-Player *Player::CreateNewPlayer(enum PlayerType playerType, string &playerName) {
-    //kinda cluncky tbh. i really liked the map idea. either way, this is a factory method.
-    //TODO: maybe make it its own class/header?
-    //why not just use a string?, why not just 'return new Warrior(playerName);'?
-    Player* newPlayer;
-    switch (playerType) {
-        case PlayerType::Warrior :{
-            newPlayer= new Warrior(playerName);
-            return newPlayer;
-        }
-        case PlayerType::Ninja:{
-            newPlayer= new Ninja(playerName);
-            return newPlayer;
-        }
-        case PlayerType::Healer:{
-            newPlayer= new Healer(playerName);
-            return newPlayer;
-        }
-        default: {
-            throw std::exception(); //TODO specify exception
-        }
+Player *Player::CreateNewPlayer(const std::string& job,const std::string &playerName) {
+    if (job=="Ninja"){
+        return new Ninja(playerName);
+    }
+    if(job=="Healer") {
+        return new Healer(playerName);
+    }
+    if(job=="Warrior") {
+        return new Warrior(playerName);
+    }
+    else{
+        throw std::exception(); //TODO: specify exception
     }
 }
 

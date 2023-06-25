@@ -46,7 +46,8 @@ Card *Card::createNewCard(const std::string &type) {
     if (type=="Treasure") {
         return new Treasure();
     }
-    throw std::exception();//TODO: return nullptr/new dedicated exception ( mtmchkin throws 'invalid format', needs to know the line number)
+    throw std::exception();
+    //TODO: return nullptr/new dedicated exception ( mtmchkin throws 'invalid format', needs to know the line number)
 }
 
 std::ostream &Card::print(std::ostream &os) const {

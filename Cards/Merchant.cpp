@@ -12,7 +12,7 @@ int getChoiceFromUser(){
         try{
             choice= std::stoi(input);
         }
-        catch (std::exception&){ //TODO check this ???
+        catch (std::exception&){
             printInvalidInput();
             std::cout << "please reenter:" << std::endl;
             continue;

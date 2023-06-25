@@ -1,36 +1,20 @@
 //
 // Created by Daniella on 13/06/2023.
 //
-//TODO
-//implement player class and 3 subtypes-Ninja,Warrior and Healer
-
 #ifndef EX4_MTM_PLAYER_H
 #define EX4_MTM_PLAYER_H
 
 #include <string>
-using std::string;
 
-#define DEFAULT_MAX_HP 100  //TODO: this is not how we define constants in c++!!!!
-#define DEFAULT_COINS 10
-#define DEFAULT_FORCE_POINTS 5
 
-/**
- * Player Type
- */
-enum class PlayerType {Ninja, Warrior, Healer}; //why enum class???
-
-/**
- * converts string to PlayerType
- * @param strType string that contains the requested class
- * @return Player type variable
- * throws invalid type if no strings match
- */
-enum PlayerType PlayerType(const string& type); //TODO: why not just use a string?
 
 
 class Player {
 public:
-
+    //const Values:
+    static const int DEFAULT_MAX_HP =100;
+    static const int DEFAULT_COINS =10;
+    static const int DEFAULT_FORCE_POINTS=5;
     /*
      * Increases player level by 1 up to level 10
      * above level 10 does nothing
@@ -87,7 +71,7 @@ public:
      * @return a pointer to a new player of the correct type on the heap
      * caller is responsible to delete data
      */
-    static Player* CreateNewPlayer(enum PlayerType playerType, string &playerName);
+    static Player* CreateNewPlayer(const std::string& job, const std::string &playerName);
 
 
     /*
@@ -100,7 +84,7 @@ public:
     /*
      *@returns player name
      */
-    string getName() const;
+    std::string getName() const;
 
     /*
      * returns player coins
@@ -146,16 +130,12 @@ protected:
     /**
      * C'tor of Player class
      *
-     * @param name  - the name of the player -//TODO handle invalid input
+     * @param name - the name of the player -//TODO: handle invalid input
      * creates new player with default values
      */
-    explicit Player(const string& name) :
-            m_name(name), m_level(1),
-            m_force(DEFAULT_FORCE_POINTS),
-            m_currentHealth(DEFAULT_MAX_HP),
-            m_coins(DEFAULT_COINS){};
+    explicit Player(const std::string& name);
 
-    string m_name; // consists only of english letters, max 15 chars
+    std::string m_name; // consists only of english letters, max 15 chars
     int m_level; //range 1-10
     int m_force; // non-negative
     int m_currentHealth; // range 0- maxHP
