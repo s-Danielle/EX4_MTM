@@ -90,9 +90,6 @@ public:
      * returns player coins
      */
     int getCoins() const;
-    /*
-     * prints player details using utilities.h
-     */
 
     /*
      * Player falls into Well
@@ -111,7 +108,7 @@ public:
 
 
     /*
-     * default printing function
+     * default printing function using utilities.h
      */
     virtual std::ostream& print(std::ostream& os) const =0;
 

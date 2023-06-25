@@ -36,11 +36,15 @@ protected:
 
     /**
      * C'tor
-     * @param name
+     * @param name is basically card type-not up to user.
      */
     explicit Card(const std::string& name): m_name(name){};
 public:
 
+    /*
+     * for user ease-creates new card from string,
+     * if no matching card will throw an exception
+     */
     Card* createNewCard(const string& type);
 
     /*
@@ -50,9 +54,9 @@ public:
     virtual void applyEncounter( Player&) const=0;
 
     /*
-     * default print function
+     * default print function using utilities.h
      */
-    virtual std::ostream& print(std::ostream& os) const;    //why public?, why not static in cpp?
+    virtual std::ostream& print(std::ostream& os) const;
 
     //Here we are explicitly telling the compiler to use the default/delete methods:
     Card& operator=(const Card&)=default;
