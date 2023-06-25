@@ -15,10 +15,12 @@ class Exception : public std::exception
 
 class DeckFileNotFound : public Exception
 {
+	public:
 	explicit DeckFileNotFound(){ message = "Deck File Error: File not found"; };
 };
 class DeckFileFormatError : public Exception
 {
+	public:
 	explicit DeckFileFormatError(int lineNum): lineNum(lineNum) { message = "Deck File Error: File format error in line "+ std::to_string(lineNum); };
 
 	private:
@@ -27,5 +29,6 @@ class DeckFileFormatError : public Exception
 
 class DeckFileInvalidSize : public Exception
 {
+	public:
 	explicit DeckFileInvalidSize(){ message = "Deck File Error: Deck size is invalid"; };
 };

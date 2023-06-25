@@ -1,6 +1,8 @@
 #ifndef MTMCHKIN_H_
 #define MTMCHKIN_H_
 #include <string>
+#include <queue>
+#include "Card.h"
 
 class Mtmchkin{
 
@@ -49,7 +51,8 @@ public:
     int getNumberOfRounds() const;
 
 private:
-    
+    std::queue<std::unique_ptr<Card>> deck;
+    //std::queue<std::unique_ptr<Player>> players;
 };
 
 

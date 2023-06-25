@@ -1,7 +1,19 @@
 #include "Mtmchkin.h"
-#include <iostream>
+#include <memory>
 #include <fstream>
-#include <string>
-Mtmchkin::Mtmchkin(const std::string &filename){
+#include "Exception.h"
+using std::queue;
+using std::unique_ptr;
 
+Mtmchkin::Mtmchkin(const std::string &filename) : deck(createDeck(filename)) {
+	
+}
+	
+
+
+static queue<unique_ptr<Card>> createDeck(const std::string &filename){
+	std::ifstream file(filename);
+	if(!file.is_open()){
+		throw DeckFileNotFound();
+	}
 }
