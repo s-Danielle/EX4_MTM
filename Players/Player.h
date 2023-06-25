@@ -64,14 +64,6 @@ public:
      */
     bool pay(int price);
 
-    /**
-     *
-     * @param playerType use PlayerType(string type) to convert string to enum- safe use as it throws an exception
-     * @param playerName expected to be valid - up to caller to check the string to match requirements!
-     * @return a pointer to a new player of the correct type on the heap
-     * caller is responsible to delete data
-     */
-    static Player* CreateNewPlayer(const std::string& job, const std::string &playerName);
 
 
     /*
@@ -127,7 +119,7 @@ protected:
     /**
      * C'tor of Player class
      *
-     * @param name - the name of the player -//TODO: handle invalid input
+     * @param name - the name of the player throws exception if name is invalid
      * creates new player with default values
      */
     explicit Player(const std::string& name);
@@ -140,5 +132,13 @@ protected:
 
 };
 
+/**
+  *
+  * @param playerType throws an exception if invalid
+  * @param playerName expected to be valid - up to caller to check the string to match requirements!
+  * @return a pointer to a new player of the correct type on the heap
+  * caller is responsible to delete data
+  */
+static Player* CreateNewPlayer(const std::string& job, const std::string &playerName);
 
 #endif //EX4_MTM_PLAYER_H

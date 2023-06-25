@@ -42,12 +42,6 @@ protected:
 public:
 
     /*
-     * for user ease-creates new card from string,
-     * if no matching card will throw an exception
-     */
-    Card* createNewCard(const string& type);
-
-    /*
      * handles the encounter with player
      * each card has a different behavior
      */
@@ -63,10 +57,17 @@ public:
     Card(const Card&)=default;
     virtual ~Card()=default;
 
-
     //overloading operator >>
     friend std::ostream& operator<<(std::ostream& os, const Card& card);
 };
+
+
+/*
+ * for user ease-creates new card from string,
+ * if no matching card will throw an exception
+ */
+Card* createNewCard(const string& type);
+
 
 #endif //EX4_MTM_CARD_H
 
