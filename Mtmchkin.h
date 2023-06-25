@@ -7,6 +7,8 @@
 class Mtmchkin{
 
 public:
+
+    static const int MIN_DECK_SIZE = 5;
     
     /*
     * C'tor of Mtmchkin class

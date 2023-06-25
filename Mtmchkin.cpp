@@ -21,6 +21,12 @@ static queue<unique_ptr<Card>> createDeck(const std::string &filename){
 	int lineNum = 0;
 	while(std::getline(file, line)){
 		lineNum++;
-		deck
+		Card * currentCard = Card::createNewCard(line); //call factory method
+		//handle exceptions
+		deck.push(unique_ptr<Card>(currentCard)); //maybe collapse this line into the previous one, no need to ::move
+	}
+	if(lineNum <= Mtmchkin::MIN_DECK_SIZE){
+		throw DeckFileInvalidSize();
+		//make sure to not leak memory.
 	}
 }

@@ -25,7 +25,8 @@ enum class PlayerType {Ninja, Warrior, Healer}; //why enum class???
  * @return Player type variable
  * throws invalid type if no strings match
  */
-PlayerType PlayerType(const string& type);
+enum PlayerType PlayerType(const string& type); //TODO: why not just use a string?
+
 
 class Player {
 public:
