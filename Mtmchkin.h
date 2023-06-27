@@ -55,11 +55,17 @@ public:
     int getNumberOfRounds() const;
 
 private:
-    const std::queue<std::shared_ptr<Card>> m_deck;
+    const std::vector<std::shared_ptr<const Card>> m_deck;
+    std::vector<std::shared_ptr<Card>>::const_iterator m_currentCard;
+
+    std::vector<std::shared_ptr<Player>> m_players;
+
+    std::vector<std::shared_ptr<Player>> m_leaderBoard; // i want to update it every round
+
     int m_numberOfRounds;
     int m_teamSize;
-    std::queue<std::shared_ptr<Player>> m_players;
 
+    const std::shared_ptr<Card> getCurrentCard() const;
 };
 
 
