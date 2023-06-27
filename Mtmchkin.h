@@ -9,6 +9,8 @@ class Mtmchkin{
 public:
 
     static const int MIN_DECK_SIZE = 5;
+    static const int MAX_PLAYERS = 6;
+    static const int MIN_PLAYERS = 2;
     
     /*
     * C'tor of Mtmchkin class
@@ -53,8 +55,11 @@ public:
     int getNumberOfRounds() const;
 
 private:
-    std::queue<std::unique_ptr<Card>> deck;
-    //std::queue<std::unique_ptr<Player>> players;
+    const std::queue<std::shared_ptr<Card>> m_deck;
+    int m_numberOfRounds;
+    int m_teamSize;
+    std::queue<std::shared_ptr<Player>> m_players;
+
 };
 
 

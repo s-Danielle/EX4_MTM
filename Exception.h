@@ -1,5 +1,7 @@
 #include <exception>
 #include <string>
+#ifndef EXCEPTION_H
+#define EXCEPTION_H
 
 class Exception : public std::exception
 {
@@ -32,3 +34,10 @@ class DeckFileInvalidSize : public Exception
 	public:
 	explicit DeckFileInvalidSize(){ message = "Deck File Error: Deck size is invalid"; };
 };
+ class InvalidTeamSize : public Exception
+ {
+ 	public:
+ 	explicit InvalidTeamSize(){ message = "Invalid team size"; };
+ };
+ 
+#endif //EXCEPTION_H
