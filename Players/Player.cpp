@@ -9,8 +9,10 @@
 #include "Healer.h"
 
 bool nameCheck(const std::string& name){
-    bool check =name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") ==
-                std::string::npos;
+    bool check =true;
+    for (char i : name) {
+        check = check && isalpha(i);
+    }
     check = check && name.length()<=15;
     return check;
 }
@@ -99,7 +101,7 @@ int Player::getAttackStrength() const {
 }
 
 
-Player *Player::CreateNewPlayer(const std::string& job,const std::string &playerName) {
+Player* CreateNewPlayer(const std::string& job, const std::string &playerName) {
     if (job=="Ninja"){
         return new Ninja(playerName);
     }
