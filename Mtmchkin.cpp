@@ -1,6 +1,7 @@
 #include "Mtmchkin.h"
 #include <memory>
 #include <fstream>
+#include <sstream>
 #include "Exception.h"
 #include "utilities.h"
 using std::shared_ptr;
@@ -18,7 +19,6 @@ Mtmchkin::Mtmchkin(const std::string &fileName) : m_deck(createDeck(fileName)),
 	printEnterTeamSizeMessage();
 	m_teamSize = getTeamSize();
 	m_players = createPlayerList(m_teamSize);
-	m_currentPlayer = m_players.begin();
 	m_leaderBoard.assign(m_players.begin(), m_players.end());
 }
 
@@ -38,14 +38,14 @@ void Mtmchkin::playRound()
  * throws DeckFileFormatError if the file is not in the correct format.
  * throws DeckFileInvalidSize if the deck is too small.
  */
-static vector<shared_ptr<Card>> createDeck(const std::string &fileName)
+static vector<shared_ptr<const Card>> createDeck(const std::string &fileName)
 {
 	std::ifstream file(fileName);
 	if (!file.is_open())
 	{
 		throw DeckFileNotFound();
 	}
-	vector<shared_ptr<Card>> deck;
+	vector<shared_ptr<const Card>> deck;
 	std::string line;
 	int lineNum = 0;
 	while (std::getline(file, line))
@@ -57,7 +57,7 @@ static vector<shared_ptr<Card>> createDeck(const std::string &fileName)
 		lineNum++;
 		Card *currentCard = createNewCard(line); // TODO:call factory method, fix this mess, its in a constructor
 		// handle exceptions
-		deck.push_back(shared_ptr<Card>(currentCard)); // maybe collapse this line into the previous one
+		deck.push_back(shared_ptr<const Card>(currentCard)); // maybe collapse this line into the previous one
 	}
 	// TODO: check for empty lines/lines with only spaces/empty deck
 	if (lineNum <= Mtmchkin::MIN_DECK_SIZE)
@@ -107,5 +107,19 @@ static int getTeamSize()
 static vector<shared_ptr<Player>> createPlayerList(int teamSize)
 {
 	vector<shared_ptr<Player>> players;
-	
+	for(int i = 0; i < teamSize; i++)
+	{
+		players.push_back(createPlayer());
+		//maybe try catch here?
+	}
+}
+
+/**@return: a shared_ptr to a player.
+ * creates a player from standard input.
+ */
+static shared_ptr<Player> createPlayer(){
+	string input;
+	printInsertPlayerMessage();
+	std::getline(std::cin, input);
+	std::istringstream iss(input);
 }

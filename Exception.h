@@ -39,5 +39,17 @@ class DeckFileInvalidSize : public Exception
  	public:
  	explicit InvalidTeamSize(){ message = "Invalid team size"; };
  };
+
+ class InvalidPlayerName : public Exception
+ {
+ 	public:
+ 	explicit InvalidPlayerName(){ message = "Invalid player name"; };
+ };
+
+ class InvalidPlayerClass : public Exception
+ {
+ 	public:
+ 	explicit InvalidPlayerClass(){ message = "Invalid player class"; };
+ };
  
 #endif //EXCEPTION_H

@@ -1,7 +1,8 @@
 #ifndef MTMCHKIN_H_
 #define MTMCHKIN_H_
 #include <string>
-#include <queue>
+#include <list>
+#include <vector>
 #include "Card.h"
 
 class Mtmchkin{
@@ -56,16 +57,18 @@ public:
 
 private:
     const std::vector<std::shared_ptr<const Card>> m_deck;
-    std::vector<std::shared_ptr<Card>>::const_iterator m_currentCard;
+    std::vector<std::shared_ptr<const Card>>::const_iterator m_currentCard;
 
     std::vector<std::shared_ptr<Player>> m_players;
 
-    std::vector<std::shared_ptr<Player>> m_leaderBoard; // i want to update it every round
+    std::list<std::shared_ptr<const Player>> m_leaderBoard; 
+    // i want to update it every round. holds pointers to players in m_players, in the leader board order. 
+    //the players should not be changed in the list, only the order of the pointers, so i used const pointers.
 
     int m_numberOfRounds;
     int m_teamSize;
 
-    const std::shared_ptr<Card> getCurrentCard() const;
+    const std::shared_ptr<const Card> getCurrentCard() const;
 };
 
 
