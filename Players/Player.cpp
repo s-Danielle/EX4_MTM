@@ -14,6 +14,9 @@ bool nameCheck(const std::string& name){
         check = check && isalpha(i);
     }
     check = check && name.length()<=15;
+    //==========you've got mail!================
+    // '15' should be a static const member variable.
+    //  zohar <3. 
     return check;
 }
 
@@ -24,6 +27,9 @@ Player::Player(const std::string &name)  :
         m_coins(DEFAULT_COINS){
     if(!nameCheck(name)){
         throw std::exception();//TODO: specify
+            //==========you've got mail!================
+            // throw "InvalidPlayerName".
+            //  zohar <3. 
     }
 }
 
@@ -113,6 +119,10 @@ Player* CreateNewPlayer(const std::string& job, const std::string &playerName) {
     }
     else{
         throw std::exception(); //TODO: specify exception
+
+        //==========you've got mail!================
+        // throw "InvalidPlayerClass".
+        //  zohar <3.
     }
 }
 

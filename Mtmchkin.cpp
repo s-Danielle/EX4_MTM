@@ -48,39 +48,42 @@ void Mtmchkin::playRound()
  * throws DeckFileFormatError if the file is not in the correct format.
  * throws DeckFileInvalidSize if the deck is too small.
  */
-static vector<shared_ptr<const Card>> createDeck(const std::string &fileName)
+static vector<unique_ptr<const Card>> createDeck(const std::string &fileName)
 {
 	std::ifstream file(fileName);
 	if (!file.is_open())
 	{
 		throw DeckFileNotFound();
 	}
-	vector<shared_ptr<const Card>> deck;
+	vector<unique_ptr<const Card>> deck;
 	std::string line;
 	int lineNum = 0;
 	while (std::getline(file, line))
 	{
+		line = strip(line);
+		lineNum++;
 		if (line.length() == 0)
 		{
-			/**in case of an empty line, we want to accept them only in they are in the end of the file*/
-
+			/*if we encountered an empty line, it means either were done, or that there was an error.*/
+			while(std::getline(file, line)){
+				if(strip(line).length()!=0){
+					throw DeckFileFormatError(lineNum);
+				}
+			}
 		}
-		if(countWords(line)!=1){
+
+		Card* currentCard = nullptr;
+		try{
+			createNewCard(line);
+		}
+		catch(InvalidInput& e){
 			throw DeckFileFormatError(lineNum);
 		}
-		strip(line);
-		lineNum++;
-		Card *currentCard;
-		try{
-			createNewCard(stripline);
-			}
-		catch(InvalidCardName& e){
 
-		}
-		// handle exceptions
-		deck.push_back(shared_ptr<const Card>(currentCard)); // maybe collapse this line into the previous one
+
+		deck.emplace_back(currentCard); // i think i can only do this in c++11, so i hope they will compile it like they said.
+									   //make_unique is c++14 and above.
 	}
-	// TODO: check for empty lines/lines with only spaces/empty deck
 	if (lineNum <= Mtmchkin::MIN_DECK_SIZE)
 	{
 		throw DeckFileInvalidSize();
@@ -162,5 +165,6 @@ static shared_ptr<Player> createPlayer(){
 
 	shared_ptr<Player> player;
 	player = createNewPlayer(extractNthWord(input, 1), extractNthWord(input, 2));
+	//i dont like using having 'magic numbers' in my code, but seems stupid to create a const for 1 and 2.
 	return player;
 }

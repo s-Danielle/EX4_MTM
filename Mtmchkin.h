@@ -56,8 +56,8 @@ public:
     int getNumberOfRounds() const;
 
 private:
-    const std::vector<std::shared_ptr<const Card>> m_deck;
-    std::vector<std::shared_ptr<const Card>>::const_iterator m_currentCard;
+    const std::vector<std::unique_ptr<const Card>> m_deck;
+    std::vector<std::unique_ptr<const Card>>::const_iterator m_currentCard;
 
     std::vector<std::shared_ptr<Player>> m_players;
 
