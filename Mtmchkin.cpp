@@ -4,7 +4,9 @@
 #include <sstream>
 #include "Exception.h"
 #include "utilities.h"
+#include "StringUtils.h"
 using std::shared_ptr;
+using std::unique_ptr;
 using std::vector;
 
 /**@param fileName: text file with card list.
@@ -18,7 +20,7 @@ Mtmchkin::Mtmchkin(const std::string &fileName) : m_deck(createDeck(fileName)),
 	printStartGameMessage();
 	printEnterTeamSizeMessage();
 	m_teamSize = getTeamSize();
-	m_players = createPlayerList(m_teamSize);
+	m_players = createPlayerList(m_teamSize);	//TODO: move to initializer list
 	m_leaderBoard.assign(m_players.begin(), m_players.end());
 }
 
@@ -30,6 +32,14 @@ void Mtmchkin::playRound()
 	// play card
 	// check if game ended
 }
+
+
+/**
+ * ==================================================================
+ * ========================Helper Functions==========================
+ * ==================================================================
+*/
+
 
 /**@param fileName: file path.
  * @return: a queue of unique_ptr to cards.
@@ -52,10 +62,21 @@ static vector<shared_ptr<const Card>> createDeck(const std::string &fileName)
 	{
 		if (line.length() == 0)
 		{
-			// empty line;
+			/**in case of an empty line, we want to accept them only in they are in the end of the file*/
+
 		}
+		if(countWords(line)!=1){
+			throw DeckFileFormatError(lineNum);
+		}
+		strip(line);
 		lineNum++;
-		Card *currentCard = createNewCard(line); // TODO:call factory method, fix this mess, its in a constructor
+		Card *currentCard;
+		try{
+			createNewCard(stripline);
+			}
+		catch(InvalidCardName& e){
+
+		}
 		// handle exceptions
 		deck.push_back(shared_ptr<const Card>(currentCard)); // maybe collapse this line into the previous one
 	}
@@ -90,7 +111,7 @@ static int getTeamSize()
 			successfulInput = false;
 			continue;
 		}
-		if (teamSize > Mtmchkin::MAX_PLAYERS || teamSize < Mtmchkin::MIN_PLAYERS)
+		if (countWords(line)!= 1 ||teamSize > Mtmchkin::MAX_PLAYERS || teamSize < Mtmchkin::MIN_PLAYERS)
 		{
 			printInvalidTeamSize();
 			successfulInput = false;
@@ -102,24 +123,44 @@ static int getTeamSize()
 
 /**@param teamSize: number of players in the game.
  * @return: a vector of shared_ptr to players.
- * creates a list of players from standard input.
+ * creates a vector of players from standard input.
  */
 static vector<shared_ptr<Player>> createPlayerList(int teamSize)
 {
 	vector<shared_ptr<Player>> players;
-	for(int i = 0; i < teamSize; i++)
-	{
-		players.push_back(createPlayer());
-		//maybe try catch here?
+	int playersCreated = 0;
+	while(playersCreated<teamSize){
+		try{
+			players.push_back(createPlayer());
+		}
+		catch(InvalidPlayerName& e){
+			printInvalidName();
+			continue;
+		}
+		catch(InvalidPlayerClass& e){
+			printInvalidClass();
+			continue;
+		}
+		catch(InvalidInput& e){
+			printInvalidInput();
+			continue;
+		}
+		playersCreated++;
 	}
 }
 
 /**@return: a shared_ptr to a player.
- * creates a player from standard input.
+ * creates a player from standard input, using the factory method createNewPlayer.
  */
 static shared_ptr<Player> createPlayer(){
 	string input;
 	printInsertPlayerMessage();
 	std::getline(std::cin, input);
-	std::istringstream iss(input);
+	if(countWords(input)!=2){
+		throw InvalidInput();
+	}
+
+	shared_ptr<Player> player;
+	player = createNewPlayer(extractNthWord(input, 1), extractNthWord(input, 2));
+	return player;
 }

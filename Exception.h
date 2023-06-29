@@ -51,5 +51,11 @@ class DeckFileInvalidSize : public Exception
  	public:
  	explicit InvalidPlayerClass(){ message = "Invalid player class"; };
  };
+
+ class InvalidInput : public Exception //
+ {
+ 	public:
+ 	explicit InvalidInput(){ message = "Invalid input"; };
+ };
  
 #endif //EXCEPTION_H
