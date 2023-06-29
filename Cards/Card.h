@@ -62,9 +62,11 @@ public:
 };
 
 
-/*
- * for user ease-creates new card from string,
- * if no matching card will throw an exception
+/**
+ * Factory-like function
+ * @param type string consists of player type-if no match or invalid throws exception
+ * @return pointer to a new card of the desired class
+ * caller is responsible for the memory
  */
 Card* createNewCard(const string& type);
 

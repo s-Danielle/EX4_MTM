@@ -46,12 +46,7 @@ Card* createNewCard(const std::string &type) {
     if (type=="Treasure") {
         return new Treasure();
     }
-    throw std::exception();
-    //TODO: return nullptr/new dedicated exception 
-
-    //==========you've got mail!================
-    // throw "InvalidInput".
-    //  zohar <3. 
+    throw InvalidInput();
 }
 
 std::ostream &Card::print(std::ostream &os) const {

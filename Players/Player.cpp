@@ -7,16 +7,14 @@
 #include "Ninja.h"
 #include "Warrior.h"
 #include "Healer.h"
+#include "../Exception.h"
 
 bool nameCheck(const std::string& name){
     bool check =true;
     for (char i : name) {
         check = check && isalpha(i);
     }
-    check = check && name.length()<=15;
-    //==========you've got mail!================
-    // '15' should be a static const member variable.
-    //  zohar <3. 
+    check = check && name.length()<=Player::MAX_NAME_LEN;
     return check;
 }
 
@@ -26,10 +24,7 @@ Player::Player(const std::string &name)  :
         m_currentHealth(DEFAULT_MAX_HP),
         m_coins(DEFAULT_COINS){
     if(!nameCheck(name)){
-        throw std::exception();//TODO: specify
-            //==========you've got mail!================
-            // throw "InvalidPlayerName".
-            //  zohar <3. 
+        throw InvalidPlayerName();
     }
 }
 
@@ -118,11 +113,7 @@ Player* createNewPlayer(const std::string& job, const std::string &playerName) {
         return new Warrior(playerName);
     }
     else{
-        throw std::exception(); //TODO: specify exception
-
-        //==========you've got mail!================
-        // throw "InvalidPlayerClass".
-        //  zohar <3.
+        throw InvalidPlayerClass();
     }
 }
 
