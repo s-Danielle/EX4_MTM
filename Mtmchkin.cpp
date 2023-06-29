@@ -72,9 +72,13 @@ static vector<unique_ptr<const Card>> createDeck(const std::string &fileName)
 			}
 		}
 
+		if(countWords(line)!=1){
+			throw DeckFileFormatError(lineNum);
+		}
+
 		Card* currentCard = nullptr;
 		try{
-			createNewCard(line);
+			currentCard = createNewCard(line);
 		}
 		catch(InvalidInput& e){
 			throw DeckFileFormatError(lineNum);
@@ -163,8 +167,7 @@ static shared_ptr<Player> createPlayer(){
 		throw InvalidInput();
 	}
 
-	shared_ptr<Player> player;
-	player = createNewPlayer(extractNthWord(input, 1), extractNthWord(input, 2));
+	shared_ptr<Player> player(createNewPlayer(extractNthWord(input, 1), extractNthWord(input, 2)));
 	//i dont like using having 'magic numbers' in my code, but seems stupid to create a const for 1 and 2.
 	return player;
 }

@@ -139,6 +139,11 @@ protected:
   * @return a pointer to a new player of the correct type on the heap
   * caller is responsible to delete data
   */
-static Player* CreateNewPlayer(const std::string& job, const std::string &playerName);
+Player* createNewPlayer(const std::string& job, const std::string &playerName);
+        //==========you've got mail!================
+        // iv'e deleted the 'static' from this function.
+        //functions are in the .h file so they can be used in other files.
+        //also, fixed the name of the function. (it was a big 'C' in the beginning)
+        //  zohar <3.
 
 #endif //EX4_MTM_PLAYER_H

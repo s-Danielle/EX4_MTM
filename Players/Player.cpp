@@ -107,7 +107,7 @@ int Player::getAttackStrength() const {
 }
 
 
-Player* CreateNewPlayer(const std::string& job, const std::string &playerName) {
+Player* createNewPlayer(const std::string& job, const std::string &playerName) {
     if (job=="Ninja"){
         return new Ninja(playerName);
     }

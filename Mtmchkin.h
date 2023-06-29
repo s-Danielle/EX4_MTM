@@ -4,6 +4,7 @@
 #include <list>
 #include <vector>
 #include "Card.h"
+#include "Player.h"
 
 class Mtmchkin{
 
