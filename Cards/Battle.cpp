@@ -14,6 +14,7 @@ void Battle::applyEncounter( Player & player) const {
     }
     else{
         player.addCoins(m_stats.m_loot);
+        player.levelUp();   //important
         printWinBattle(player.getName(),m_name);
     }
 }

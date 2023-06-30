@@ -49,6 +49,9 @@ bool Player::isWinner() const {
     return m_level==MAX_LEVEL;
 }
 
+bool Player::isPlaying() const {
+    return ( ! (isWinner()||isKnockedOut()));   //De-Morgans' law.
+}
 int Player::getLevel() const {
     return m_level;
 }

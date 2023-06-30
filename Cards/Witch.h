@@ -8,7 +8,7 @@
 
 #define WITCH_FORCE 12
 #define WITCH_DAMAGE 10
-#define WITCH_LOOT 3
+#define WITCH_LOOT 3    //TODO: make it const
 
 
 class Witch :public Battle{

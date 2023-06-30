@@ -33,6 +33,9 @@ public:
      */
     bool isWinner() const;
 
+    /*returns true if the player is still in the game*/
+    bool isPlaying() const;
+
     /*
      * @returns player level
      */

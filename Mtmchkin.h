@@ -3,6 +3,7 @@
 #include <string>
 #include <list>
 #include <vector>
+#include <memory>
 #include "Card.h"
 #include "Player.h"
 
@@ -69,7 +70,6 @@ private:
     int m_numberOfRounds;
     int m_teamSize;
 
-    const std::shared_ptr<const Card> getCurrentCard() const;
 };
 
 

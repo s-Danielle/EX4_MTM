@@ -1,5 +1,4 @@
 #include "Mtmchkin.h"
-#include <memory>
 #include <fstream>
 #include <sstream>
 #include <cassert>
@@ -30,7 +29,7 @@ void Mtmchkin::playRound()
 	printRoundStartMessage(m_numberOfRounds);
 	// for each player that didn't die or win
 	for(shared_ptr<Player> currentPlayer : m_players){
-		if(currentPlayer->isKnockedOut() || currentPlayer->isWinner()){
+		if(!currentPlayer->isPlaying()){
 			continue;
 		}
 		// play card
@@ -64,7 +63,7 @@ void Mtmchkin::printLeaderBoard() const
 bool Mtmchkin::isGameOver() const
 {
 	for(shared_ptr<Player> currentPlayer : m_players){
-		if( ! (currentPlayer->isWinner()||currentPlayer->isKnockedOut())){
+		if(currentPlayer->isPlaying()){
 			//using De-Morgans' law.
 			return false;
 		}
@@ -114,6 +113,7 @@ static vector<unique_ptr<const Card>> createDeck(const std::string &fileName)
 					throw DeckFileFormatError(lineNum);
 				}
 			}
+			//return????? break?
 		}
 
 		if(countWords(line)!=1){
