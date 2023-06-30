@@ -11,23 +11,23 @@
 #include "Card.h"
 using std::string;
 
-struct cardStats{
+struct CardStats{
     int m_force;
     int m_damage;
     int m_loot;
-}typedef cardStats;
+};
 
 
 
 class Battle: public Card{
 protected:
-    cardStats m_stats;
+    CardStats m_stats;
     /**
      * C'tor of battle Card
      * @param type use BattleCard(string type) for safe use- will throw exception
      * returns new instance
      */
-    Battle(const string &name, cardStats stats):
+    Battle(const string &name, CardStats stats):
            Card(name),
            m_stats(stats){};
 public:
