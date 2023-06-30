@@ -6,9 +6,6 @@
 #define EX4_MTM_GREMLIN_H
 #include "Battle.h"
 
-
-#define
-
 class Gremlin : public Battle{
 private:
     static const int GREMLIN_FORCE= 7;
