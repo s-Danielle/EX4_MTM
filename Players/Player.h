@@ -15,6 +15,7 @@ public:
     static const int DEFAULT_MAX_HP =100;
     static const int DEFAULT_COINS =10;
     static const int DEFAULT_FORCE_POINTS=5;
+    static const int MAX_NAME_LEN=15;
     /*
      * Increases player level by 1 up to level 10
      * above level 10 does nothing
@@ -111,7 +112,7 @@ public:
     /*
     * Here we are explicitly telling the compiler to use the default/delete methods
     */
-    Player& operator = (const Player&) = default; // ?? wtf is this
+    Player& operator = (const Player&) = default;
     Player(const Player&) = default;
     virtual ~Player() = default;
 
@@ -133,17 +134,12 @@ protected:
 };
 
 /**
-  *
-  * @param playerType throws an exception if invalid
-  * @param playerName expected to be valid - up to caller to check the string to match requirements!
+  *Factory-like function
+  * @param playerType desired class, throws an exception if invalid
+  * @param playerName throws an exception if invalid
   * @return a pointer to a new player of the correct type on the heap
   * caller is responsible to delete data
   */
 Player* createNewPlayer(const std::string& job, const std::string &playerName);
-        //==========you've got mail!================
-        // iv'e deleted the 'static' from this function.
-        //functions are in the .h file so they can be used in other files.
-        //also, fixed the name of the function. (it was a big 'C' in the beginning)
-        //  zohar <3.
 
 #endif //EX4_MTM_PLAYER_H
