@@ -31,7 +31,7 @@ Mtmchkin::Mtmchkin(const std::string &fileName) : m_deck(createDeck(fileName)),
 
 void Mtmchkin::playRound()
 {
-	printRoundStartMessage(m_numberOfRounds);
+	printRoundStartMessage(m_numberOfRounds+1);
 	// for each player that didn't die or win
 	for(shared_ptr<Player> currentPlayer : m_players){
 		if(!currentPlayer->isPlaying()){
@@ -60,7 +60,7 @@ void Mtmchkin::playRound()
 
 void Mtmchkin::printLeaderBoard() const
 {
-
+	m_leaderBoard.print();
 }
 bool Mtmchkin::isGameOver() const
 {

@@ -12,6 +12,7 @@ int main(){
             game->playRound();
             game->printLeaderBoard();
         }
+        game->printLeaderBoard();//is this needed?
         delete game;
         return 0;
         }
