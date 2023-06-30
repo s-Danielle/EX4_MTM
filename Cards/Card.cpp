@@ -18,8 +18,6 @@ using std::string;
 
 Card* createNewCard(const std::string &type) {
     /**this is basically a factory method.
-     *  maybe we should consider making it its own class/header, or static if not.
-     * see my note on return value.
      * the map idea was good. i hate this course so much.
      */
     if (type == "Barfight") {

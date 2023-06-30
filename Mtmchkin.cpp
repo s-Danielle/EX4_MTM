@@ -6,6 +6,7 @@
 #include "utilities.h"
 #include "StringUtils.h"
 
+
 using std::shared_ptr;
 using std::unique_ptr;
 using std::vector;
@@ -36,9 +37,12 @@ void Mtmchkin::playRound()
 		if(!currentPlayer->isPlaying()){
 			continue;
 		}
+		// print player turn message, maybe should be in applyEncounter
+		printTurnStartMessage(currentPlayer->getName());
 		// play card
 		(*m_currentCard)->applyEncounter(*currentPlayer);	//critical point
-		// check if game ended
+		
+		
 		//update cards iterator
 		if(++m_currentCard==m_deck.end()){
 			m_currentCard=m_deck.begin();
@@ -46,6 +50,9 @@ void Mtmchkin::playRound()
 		//update leader board if needed
 		if(!currentPlayer->isPlaying()){
 			m_leaderBoard.update(currentPlayer);
+		}
+		if(isGameOver()){
+			printGameEndMessage();
 		}
 	}
 	m_numberOfRounds++;
@@ -126,7 +133,7 @@ static vector<unique_ptr<const Card>> createDeck(const std::string &fileName)
 		deck.emplace_back(currentCard); // i think i can only do this in c++11, so i hope they will compile it like they said.
 									   //make_unique is c++14 and above.
 	}
-	if (lineNum <= Mtmchkin::MIN_DECK_SIZE)
+	if (lineNum < Mtmchkin::MIN_DECK_SIZE)
 	{
 		throw DeckFileInvalidSize();
 		// make sure to not leak memory.

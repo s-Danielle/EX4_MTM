@@ -8,7 +8,7 @@ int main(){
     Mtmchkin *game=nullptr;
     try{
         game=new Mtmchkin("deck.txt");
-        while(game->isGameOver()){
+        while(!game->isGameOver()){
             game->playRound();
             game->printLeaderBoard();
         }
@@ -17,6 +17,11 @@ int main(){
         }
         catch(std::bad_alloc &e){
             std::cout<<e.what()<<std::endl;
+        }
+        catch(Exception& e){
+            std::cout<<e.what()<<std::endl;
+            delete game;
+            return 0;
         }
         catch(std::exception& e){
             std::cout<<e.what()<<std::endl;

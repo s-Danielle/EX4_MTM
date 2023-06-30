@@ -6,7 +6,7 @@
 class Exception : public std::exception
 {
 	public:
-		std::string what(){ return m_message;}
+		const char* what() const noexcept override { return m_message.c_str();}
 		Exception()=default;
 		explicit Exception(std::string message): m_message(message){};
 		Exception(const Exception& other)=default;
