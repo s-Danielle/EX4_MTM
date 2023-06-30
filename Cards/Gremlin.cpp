@@ -7,8 +7,8 @@
 
 cardStats Gremlin::m_GremlinStats() {
     cardStats stats;
-    stats.m_loot=GREMLIN_LOOT;
-    stats.m_damage=GREMLIN_DAMAGE;
-    stats.m_force=GREMLIN_FORCE;
+    stats.m_loot=Gremlin::GREMLIN_LOOT;
+    stats.m_damage=Gremlin::GREMLIN_DAMAGE;
+    stats.m_force=Gremlin::GREMLIN_FORCE;
     return stats;
 }

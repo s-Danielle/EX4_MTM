@@ -7,12 +7,13 @@
 #include "Battle.h"
 
 
-#define GREMLIN_FORCE 7
-#define GREMLIN_DAMAGE 10
-#define GREMLIN_LOOT 3
+#define
 
 class Gremlin : public Battle{
 private:
+    static const int GREMLIN_FORCE= 7;
+    static const int GREMLIN_DAMAGE =10;
+    static const int GREMLIN_LOOT= 3;
     /*
      * initializes stats
      */

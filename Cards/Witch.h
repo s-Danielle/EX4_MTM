@@ -6,13 +6,12 @@
 #define EX4_MTM_WITCH_H
 #include "Battle.h"
 
-#define WITCH_FORCE 12
-#define WITCH_DAMAGE 10
-#define WITCH_LOOT 3    //TODO: make it const
-
-
 class Witch :public Battle{
+
 private:
+    static const int WITCH_FORCE= 12;
+    static const int WITCH_DAMAGE= 10;
+    static const int WITCH_LOOT= 3;
     /*
      * initializes stats
      */

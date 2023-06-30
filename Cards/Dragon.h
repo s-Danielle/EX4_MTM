@@ -7,12 +7,13 @@
 
 #include "Battle.h"
 
-#define DRAGON_FORCE 7
-#define DRAGON_LOOT 3
+
 
 
 class Dragon : public Battle{
 private:
+    static const int DRAGON_FORCE =25;
+    static const int DRAGON_LOOT=1000;
     /*
      * initializes stats
      */
