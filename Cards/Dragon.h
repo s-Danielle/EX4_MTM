@@ -12,12 +12,11 @@ class Dragon : public Battle{
 private:
     static const int DRAGON_FORCE =25;
     static const int DRAGON_LOOT=1000;
+public:
     /*
      * initializes stats
      */
-
-public:
-    static CardStats getDragonStats();
+    static Battle::CardStats getDragonStats();
     /**
      * C'tor
      * new instance of Dragon Card

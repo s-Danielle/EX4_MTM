@@ -5,8 +5,8 @@
 #include "Dragon.h"
 #include "../utilities.h"
 
-CardStats Dragon::getDragonStats() {
-    CardStats stats={Dragon::DRAGON_FORCE,Player::DEFAULT_MAX_HP,Dragon::DRAGON_LOOT};
+Battle::CardStats Dragon::getDragonStats() {
+    Battle::CardStats stats={Dragon::DRAGON_FORCE,Player::DEFAULT_MAX_HP,Dragon::DRAGON_LOOT};
 //    stats.m_loot=;
 //    stats.m_damage=;
 //    stats.m_force=;

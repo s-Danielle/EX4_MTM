@@ -12,12 +12,12 @@ private:
     static const int WITCH_FORCE= 12;
     static const int WITCH_DAMAGE= 10;
     static const int WITCH_LOOT= 3;
+
+public:
     /*
      * initializes stats
      */
-    static CardStats getWitchStats();
-public:
-
+    static Battle::CardStats getWitchStats();
     /**
      * C'tor
      * @param name card name

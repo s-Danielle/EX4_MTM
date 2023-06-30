@@ -5,29 +5,23 @@
 #ifndef EX4_MTM_BATTLE_H
 #define EX4_MTM_BATTLE_H
 
-
-#include <map>
-
 #include "Card.h"
-using std::string;
-
-struct CardStats{
-    int m_force;
-    int m_damage;
-    int m_loot;
-};
-
-
 
 class Battle: public Card{
+
 protected:
+    struct CardStats{
+        int m_force;
+        int m_damage;
+        int m_loot;
+    };
     CardStats m_stats;
     /**
      * C'tor of battle Card
      * @param type use BattleCard(string type) for safe use- will throw exception
      * returns new instance
      */
-    Battle(const string &name, CardStats stats):
+    Battle(const std::string &name, CardStats stats):
            Card(name),
            m_stats(stats){};
 public:
