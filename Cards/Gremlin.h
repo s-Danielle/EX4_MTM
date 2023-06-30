@@ -8,15 +8,14 @@
 
 class Gremlin : public Battle{
 private:
-    static const int GREMLIN_FORCE= 7;
+    static const int GREMLIN_FORCE= 5;
     static const int GREMLIN_DAMAGE =10;
-    static const int GREMLIN_LOOT= 3;
+    static const int GREMLIN_LOOT= 2;
+public:
     /*
      * initializes stats
      */
     static CardStats getGremlinStats();
-public:
-
     /**
      * C'tor
      * @param name card name

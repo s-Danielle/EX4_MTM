@@ -17,7 +17,7 @@ std::ostream &Warrior::print(std::ostream &os) const {
     printPlayerDetails(os,
                        this->m_name,"Warrior",
                        this->m_level,
-                       this->getAttackStrength(),
+                       this->m_force,
                        this->m_currentHealth,
                        this->m_coins);
     return os;

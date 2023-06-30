@@ -36,7 +36,7 @@ void Merchant::applyEncounter(Player &player) const {
             printMerchantSummary(std::cout,player.getName(),choice, 0);
         case 1:
             if(player.pay(5)){
-                player.heal(1);
+                player.heal(1);//TODO
                 printMerchantSummary(std::cout,player.getName(),choice, 5);
             }
             else{
