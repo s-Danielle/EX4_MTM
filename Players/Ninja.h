@@ -14,7 +14,7 @@ public:
      * @param name the name of the player
      * creates new Ninja player with default values
      */
-    explicit Ninja(const string& name) : Player(name) {};
+    explicit Ninja(const std::string& name) : Player(name) {};
 
     //Here we tell the compiler to use defaults:
     Ninja& operator=(const Ninja&) = default;

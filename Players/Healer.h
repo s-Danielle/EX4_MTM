@@ -13,7 +13,7 @@ public:
      * @param name the name of the player
      * creates new Healer player with default values
      */
-    explicit Healer(const string& name) : Player(name) {};
+    explicit Healer(const std::string& name) : Player(name) {};
     /*
      * hsndles Mana encounter for healer
      */

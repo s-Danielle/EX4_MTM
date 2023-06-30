@@ -13,7 +13,7 @@ public:
      * @param name the name of the player
      * creates new Warrior player with default values
      */
-    explicit Warrior(const string& name) : Player(name) {};
+    explicit Warrior(const std::string& name) : Player(name) {};
 
 
     //Here we explicitly tell the compiler what defaults we wish to use
