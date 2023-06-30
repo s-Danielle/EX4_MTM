@@ -31,7 +31,7 @@ public:
      * on Win-player will gain loot
      * on Loss-player will receive damage
      */
-    void applyEncounter(Player &)  const override;
+    virtual void applyEncounter(Player &)  const override;
 
     virtual std::ostream& print(std::ostream& os) const override;
 

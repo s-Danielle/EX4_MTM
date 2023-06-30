@@ -7,6 +7,7 @@
 #include "Card.h"
 class Treasure: public Card{
 public:
+    static const int TREASURE_LOOT=10;
     /*
      * C'tor
      */

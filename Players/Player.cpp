@@ -8,6 +8,9 @@
 #include "Warrior.h"
 #include "Healer.h"
 #include "../Exception.h"
+#include "../Cards/Well.h"
+#include "../Cards/Barfight.h"
+
 
 bool nameCheck(const std::string& name){
     bool check =true;
@@ -54,7 +57,9 @@ int Player::getLevel() const {
 }
 
 void Player::buff(int forcePoints) {
-    m_force+=forcePoints;
+    if(m_force+forcePoints>=0){
+        m_force+=forcePoints;
+    }
 }
 
 void Player::heal(int healthPoints) {
@@ -62,12 +67,18 @@ void Player::heal(int healthPoints) {
     if(m_currentHealth>DEFAULT_MAX_HP){
         m_currentHealth=DEFAULT_MAX_HP;
     }
+    if(m_currentHealth<0){
+        m_currentHealth=0;
+    }
 }
 
 void Player::damage(int healthPoints) {
     m_currentHealth-=healthPoints;
     if(m_currentHealth<0){
         m_currentHealth=0;
+    }
+    if(m_currentHealth>DEFAULT_MAX_HP){
+        m_currentHealth=DEFAULT_MAX_HP;
     }
 }
 
@@ -89,7 +100,7 @@ bool Player::pay(int price) {
 
 void Player::encounterBarfight() {
     printBarfightMessage(false);
-    damage(10);
+    damage(Barfight::BARFIGHT_DAMAGE);
 }
 
 void Player::encounterMana() {
@@ -99,7 +110,7 @@ void Player::encounterMana() {
 
 void Player::encounterWell() {
     printWellMessage(false);
-    damage(10);
+    damage(Well::WELL_DAMAGE);
 }
 
 

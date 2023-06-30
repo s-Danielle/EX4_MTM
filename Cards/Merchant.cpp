@@ -32,21 +32,21 @@ void Merchant::applyEncounter(Player &player) const {
     printMerchantInitialMessageForInteractiveEncounter(std::cout,player.getName(),player.getCoins());
     int choice=getChoiceFromUser();
     switch (choice) {
-        case 0:
+        case 0://NOTHING
             printMerchantSummary(std::cout,player.getName(),choice, 0);
-        case 1:
-            if(player.pay(5)){
-                player.heal(1);//TODO
-                printMerchantSummary(std::cout,player.getName(),choice, 5);
+        case 1://HEAL
+            if(player.pay(HEAL_COST)){
+                player.heal(HEAL_AMOUNT);//TODO
+                printMerchantSummary(std::cout,player.getName(),choice, HEAL_COST);
             }
             else{
                 printMerchantInsufficientCoins(std::cout);
             }
             break;
-        case 2:
-            if(player.pay(10)){
-                player.buff(1);
-                printMerchantSummary(std::cout,player.getName(),choice, 10);
+        case 2://BUFF
+            if(player.pay(BUFF_COST)){
+                player.buff(BUFF_AMOUNT);
+                printMerchantSummary(std::cout,player.getName(),choice, BUFF_COST);
             }
             else{
                 printMerchantInsufficientCoins(std::cout);

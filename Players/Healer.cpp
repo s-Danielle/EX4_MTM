@@ -4,14 +4,14 @@
 
 #include "Healer.h"
 #include "../utilities.h"
-
+#include "../Cards/Mana.h"
 void Healer::heal(int points) {
     this->Player::heal(points*2);
 }
 
 void Healer::encounterMana() {
     printManaMessage(true);
-    heal(10);
+    heal(Mana::MANA_HEAL);
 }
 
 

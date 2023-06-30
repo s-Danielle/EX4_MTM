@@ -184,6 +184,7 @@ static vector<shared_ptr<Player>> createPlayerList(int teamSize)
 {
 	vector<shared_ptr<Player>> players;
 	int playersCreated = 0;
+    printInsertPlayerMessage();
 	while(playersCreated<teamSize){
 		try{
 			players.push_back(createPlayer());
@@ -200,23 +201,30 @@ static vector<shared_ptr<Player>> createPlayerList(int teamSize)
 			printInvalidInput();
 			continue;
 		}
-		playersCreated++;
+
+        if(++playersCreated!=teamSize){//easiest fix for least amount of changes
+            printInsertPlayerMessage();
+        }
 	}
 	return players;
 }
+//TODO:----YOUVE GOT MAIL-----//
+//I switched the location of the "printInsertPlayerMessage();"
+//to the function above /\ from the strangely familiar named function below \/
+// (createPlayer is trying really hard not to be createNewPlayer)
+//to match the tests - see changes in last commit
+
 
 /**@return: a shared_ptr to a player.
  * creates a player from standard input, using the factory method createNewPlayer.
  */
 static shared_ptr<Player> createPlayer(){ //TODO: bad name
 	string input;
-	printInsertPlayerMessage();
 	std::getline(std::cin, input);
 	if(countWords(input)!=2){
 		throw InvalidInput();
 	}
-
 	shared_ptr<Player> player(createNewPlayer(extractNthWord(input, 1), extractNthWord(input, 2)));
-	//i dont like using having 'magic numbers' in my code, but seems stupid to create a const for 1 and 2.
+	//I don't like having 'magic numbers' in my code, but it seems stupid to create a const for 1 and 2.
 	return player;
 }

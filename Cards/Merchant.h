@@ -9,6 +9,11 @@
 
 class Merchant: public Card{
 public:
+    static const int HEAL_COST=5 ;
+    static const int BUFF_COST= 10;
+    static const int HEAL_AMOUNT= 1;
+    static const int BUFF_AMOUNT=1;
+
     /*
      * C'tor
      */

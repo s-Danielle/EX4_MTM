@@ -10,6 +10,8 @@
 
 class Barfight: public Card{
 public:
+
+    static const int BARFIGHT_DAMAGE=10;
     /*
      * C'tor
      */

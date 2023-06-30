@@ -6,9 +6,9 @@
 
 
 Battle::CardStats Gremlin::getGremlinStats() {
-    Battle::CardStats stats={Gremlin::GREMLIN_FORCE,Gremlin::GREMLIN_DAMAGE,Gremlin::GREMLIN_LOOT};
-//    stats.m_loot=Gremlin::GREMLIN_LOOT;
-//    stats.m_damage=;
-//    stats.m_force=;
+    Battle::CardStats stats{};
+    stats.m_loot=Gremlin::GREMLIN_LOOT;
+    stats.m_damage=Gremlin::GREMLIN_DAMAGE;
+    stats.m_force=Gremlin::GREMLIN_FORCE;
     return stats;
 }

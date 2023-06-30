@@ -8,6 +8,7 @@
 
 class Well: public Card{
 public:
+    static const int WELL_DAMAGE=10;
     /*
      * C'tor
      */

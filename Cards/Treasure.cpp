@@ -7,5 +7,5 @@
 
 void Treasure::applyEncounter(Player &player) const {
     printTreasureMessage();
-    player.addCoins(10);
+    player.addCoins(Treasure::TREASURE_LOOT);
 }

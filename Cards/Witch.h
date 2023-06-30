@@ -26,6 +26,7 @@ public:
     explicit Witch(): Battle("Witch", getWitchStats()){};
 
 
+    void applyEncounter(Player& player) const override;
     /*
      * Here we tell the compiler to use default/delete functions:
      */

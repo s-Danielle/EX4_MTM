@@ -9,6 +9,7 @@
 
 class Mana: public Card{
 public:
+    static const int MANA_HEAL=10;
     /*
      * C'tor
      */
