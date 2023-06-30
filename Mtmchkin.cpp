@@ -5,6 +5,7 @@
 #include "Exception.h"
 #include "utilities.h"
 #include "StringUtils.h"
+
 using std::shared_ptr;
 using std::unique_ptr;
 using std::vector;
@@ -14,14 +15,11 @@ using std::vector;
  */
 Mtmchkin::Mtmchkin(const std::string &fileName) : m_deck(createDeck(fileName)),
 												  m_currentCard(m_deck.begin()),
-												   m_players(), m_leaderBoard(),
-												    m_numberOfRounds(0)
+												   m_teamSize(getTeamSize()),
+												   m_numberOfRounds(0),
+													m_players(createPlayerList(m_teamSize)),
+												    m_leaderBoard(m_players)
 {
-	printStartGameMessage();
-	printEnterTeamSizeMessage();
-	m_teamSize = getTeamSize();
-	m_players = createPlayerList(m_teamSize);	//TODO: move to initializer list
-	m_leaderBoard.assign(m_players.begin(), m_players.end());
 }
 
 void Mtmchkin::playRound()
@@ -40,11 +38,8 @@ void Mtmchkin::playRound()
 			m_currentCard=m_deck.begin();
 		}
 		//update leader board if needed
-		if(currentPlayer->isWinner()){
-			//TODO:place player after the last winner
-		}
-		else if (currentPlayer->isKnockedOut()){
-			//TODO:place player before the first loser
+		if(!currentPlayer->isPlaying()){
+			m_leaderBoard.update(currentPlayer);
 		}
 	}
 	m_numberOfRounds++;
@@ -52,19 +47,12 @@ void Mtmchkin::playRound()
 
 void Mtmchkin::printLeaderBoard() const
 {
-	assert(m_leaderBoard.size()==m_players.size());
-	printLeaderBoardStartMessage();
-	int ranking = 1;
-	for(auto currentPlayer : m_leaderBoard){
-		printPlayerLeaderBoard(ranking, *currentPlayer);
-		ranking++;
-	}
+
 }
 bool Mtmchkin::isGameOver() const
 {
 	for(shared_ptr<Player> currentPlayer : m_players){
 		if(currentPlayer->isPlaying()){
-			//using De-Morgans' law.
 			return false;
 		}
 	}
@@ -113,7 +101,7 @@ static vector<unique_ptr<const Card>> createDeck(const std::string &fileName)
 					throw DeckFileFormatError(lineNum);
 				}
 			}
-			//return????? break?
+			break;
 		}
 
 		if(countWords(line)!=1){
@@ -137,6 +125,7 @@ static vector<unique_ptr<const Card>> createDeck(const std::string &fileName)
 		throw DeckFileInvalidSize();
 		// make sure to not leak memory.
 	}
+	printStartGameMessage();
 	return deck;	//TODO: make sure it does not cause problems with the unique_ptr
 }
 /**@return: number from standard input.
@@ -145,6 +134,7 @@ static vector<unique_ptr<const Card>> createDeck(const std::string &fileName)
  */
 static int getTeamSize()
 {
+	
 	std::string line;
 	int teamSize;
 	bool successfulInput = false;
@@ -152,6 +142,7 @@ static int getTeamSize()
 	{
 		try
 		{
+			printEnterTeamSizeMessage();
 			std::getline(std::cin, line);
 			teamSize = std::stoi(line);
 			successfulInput = true;
@@ -178,6 +169,7 @@ static int getTeamSize()
  */
 static vector<shared_ptr<Player>> createPlayerList(int teamSize)
 {
+	printEnterTeamSizeMessage();
 	vector<shared_ptr<Player>> players;
 	int playersCreated = 0;
 	while(playersCreated<teamSize){

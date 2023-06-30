@@ -4,8 +4,9 @@
 #include <list>
 #include <vector>
 #include <memory>
-#include "Card.h"
-#include "Player.h"
+#include "Cards/Card.h"
+#include "Players/Player.h"
+#include "Leaderboard.h"
 
 class Mtmchkin{
 
@@ -23,6 +24,10 @@ public:
     *      A new instance of Mtmchkin.
     */
     explicit Mtmchkin(const std::string &fileName);
+
+    ~Mtmchkin() = default;
+    Mtmchkin(const Mtmchkin &mtmchkin) = delete;
+    Mtmchkin &operator=(const Mtmchkin &mtmchkin) = delete;
     
     /*
     * Play the next Round of the game - according to the instruction in the exercise document.
@@ -61,14 +66,12 @@ private:
     const std::vector<std::unique_ptr<const Card>> m_deck;
     std::vector<std::unique_ptr<const Card>>::const_iterator m_currentCard;
 
+    int m_teamSize;
+    int m_numberOfRounds;
+
     std::vector<std::shared_ptr<Player>> m_players;
 
-    std::list<std::shared_ptr<const Player>> m_leaderBoard; 
-    // i want to update it every round. holds pointers to players in m_players, in the leader board order. 
-    //the players should not be changed in the list, only the order of the pointers, so i used const pointers.
-
-    int m_numberOfRounds;
-    int m_teamSize;
+    Leaderboard m_leaderBoard; 
 
 };
 
