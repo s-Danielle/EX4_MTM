@@ -5,7 +5,7 @@
 #include "Gremlin.h"
 
 
-cardStats Gremlin::m_GremlinStats() {
+cardStats Gremlin::getGremlinStats() {
     cardStats stats;
     stats.m_loot=Gremlin::GREMLIN_LOOT;
     stats.m_damage=Gremlin::GREMLIN_DAMAGE;

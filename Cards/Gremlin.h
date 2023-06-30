@@ -14,7 +14,7 @@ private:
     /*
      * initializes stats
      */
-    static cardStats m_GremlinStats();
+    static cardStats getGremlinStats();
 public:
 
     /**
@@ -22,7 +22,7 @@ public:
      * @param name card name
      * new instance of Gremlin Card
      */
-    explicit Gremlin(): Battle("Gremlin", m_GremlinStats()){};
+    explicit Gremlin(): Battle("Gremlin", getGremlinStats()){};
 
     /*
      * Here we tell the compiler to use default/delete functions:

@@ -5,7 +5,7 @@
 #include "Dragon.h"
 #include "../utilities.h"
 
-cardStats Dragon::m_DragonStats() {
+cardStats Dragon::getDragonStats() {
     cardStats stats;
     stats.m_loot=Dragon::DRAGON_LOOT;
     stats.m_damage=Player::DEFAULT_MAX_HP;

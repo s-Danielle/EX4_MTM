@@ -8,8 +8,6 @@
 #include "Battle.h"
 
 
-
-
 class Dragon : public Battle{
 private:
     static const int DRAGON_FORCE =25;
@@ -17,14 +15,14 @@ private:
     /*
      * initializes stats
      */
-    static cardStats m_DragonStats();
+    static cardStats getDragonStats();
 public:
 
     /**
      * C'tor
      * new instance of Dragon Card
      */
-    explicit Dragon(): Battle("Dragon", m_DragonStats()){};
+    explicit Dragon(): Battle("Dragon", getDragonStats()){};
 
 
     /*
