@@ -11,10 +11,6 @@
 #include "Card.h"
 using std::string;
 
-enum class MonsterType {Dragon, Witch, Gremlin }; //the type of the Monster
-MonsterType  MonsterType(const string& type);
-
-
 struct cardStats{
     int m_force;
     int m_damage;

@@ -14,7 +14,7 @@ bool nameCheck(const std::string& name){
     for (char i : name) {
         check = check && isalpha(i);
     }
-    check = check && name.length()<=Player::MAX_NAME_LEN;
+    check = check && (name.length()<=Player::MAX_NAME_LEN&&name.length()>0);
     return check;
 }
 
@@ -39,9 +39,6 @@ int Player::getCoins() const {
 
 void Player::levelUp() {
     if(m_level<MAX_LEVEL){
-        //==========you've got mail!================
-        // there was a 'magic number' here, so i added a const.
-        //  zohar <3.
         m_level++;
     }
 }
@@ -111,7 +108,10 @@ int Player::getAttackStrength() const {
 }
 
 
-Player* createNewPlayer(const std::string& job, const std::string &playerName) {
+Player* createNewPlayer(const std::string &playerName, const std::string& job) {
+    if(!nameCheck(playerName)){
+        throw InvalidPlayerName();
+    }
     if (job=="Ninja"){
         return new Ninja(playerName);
     }

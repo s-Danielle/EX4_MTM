@@ -149,11 +149,11 @@ protected:
 
 /**
   *Factory-like function
-  * @param playerType desired class, throws an exception if invalid
+  * @param job desired class, throws an exception if invalid
   * @param playerName throws an exception if invalid
   * @return a pointer to a new player of the correct type on the heap
   * caller is responsible to delete data
   */
-Player* createNewPlayer(const std::string& job, const std::string &playerName);
+Player* createNewPlayer(const std::string &playerName, const std::string& job);
 
 #endif //EX4_MTM_PLAYER_H

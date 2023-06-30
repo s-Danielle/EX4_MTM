@@ -10,7 +10,7 @@ class Exception : public std::exception
 		Exception()=default;
 		explicit Exception(std::string message): m_message(message){};
 		Exception(const Exception& other)=default;
-		~Exception()=default;
+		~Exception() override=default;
 	protected:
 		std::string m_message;
 };
