@@ -2,6 +2,7 @@
 #include <memory>
 #include <fstream>
 #include <sstream>
+#include <cassert>
 #include "Exception.h"
 #include "utilities.h"
 #include "StringUtils.h"
@@ -27,14 +28,53 @@ Mtmchkin::Mtmchkin(const std::string &fileName) : m_deck(createDeck(fileName)),
 void Mtmchkin::playRound()
 {
 	printRoundStartMessage(m_numberOfRounds);
-	// for each player how didn't die or win
-	for(auto iterator = m_players.begin(); iterator!=m_players.end(); iterator++){
-		if((*iterator)->isKnockedOut() || (*iterator)->)){
+	// for each player that didn't die or win
+	for(shared_ptr<Player> currentPlayer : m_players){
+		if(currentPlayer->isKnockedOut() || currentPlayer->isWinner()){
 			continue;
 		}
 		// play card
+		(*m_currentCard)->applyEncounter(*currentPlayer);	//critical point
 		// check if game ended
+		//update cards iterator
+		if(++m_currentCard==m_deck.end()){
+			m_currentCard=m_deck.begin();
+		}
+		//update leader board if needed
+		if(currentPlayer->isWinner()){
+			//TODO:place player after the last winner
+		}
+		else if (currentPlayer->isKnockedOut()){
+			//TODO:place player before the first loser
+		}
 	}
+	m_numberOfRounds++;
+}
+
+void Mtmchkin::printLeaderBoard() const
+{
+	assert(m_leaderBoard.size()==m_players.size());
+	printLeaderBoardStartMessage();
+	int ranking = 1;
+	for(auto currentPlayer : m_leaderBoard){
+		printPlayerLeaderBoard(ranking, *currentPlayer);
+		ranking++;
+	}
+}
+bool Mtmchkin::isGameOver() const
+{
+	for(shared_ptr<Player> currentPlayer : m_players){
+		if( ! (currentPlayer->isWinner()||currentPlayer->isKnockedOut())){
+			//using De-Morgans' law.
+			return false;
+		}
+	}
+	return true;
+} 
+
+int Mtmchkin::getNumberOfRounds() const
+{
+	return m_numberOfRounds;
 }
 
 
@@ -163,7 +203,7 @@ static vector<shared_ptr<Player>> createPlayerList(int teamSize)
 /**@return: a shared_ptr to a player.
  * creates a player from standard input, using the factory method createNewPlayer.
  */
-static shared_ptr<Player> createPlayer(){
+static shared_ptr<Player> createPlayer(){ //TODO: bad name
 	string input;
 	printInsertPlayerMessage();
 	std::getline(std::cin, input);
