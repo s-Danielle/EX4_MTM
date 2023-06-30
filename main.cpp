@@ -3,5 +3,10 @@
 //
 #include "Mtmchkin.h"
 int main(){
+    try{
+        Mtmchkin game("Deck.txt");
+        }
+
+
     return 0;
 }
