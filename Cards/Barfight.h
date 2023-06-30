@@ -27,4 +27,4 @@ public:
 };
 
 
-#endif //EX4_MTM_BARFIGHT_H
+#endif //EX4_MTM_Barfight_H

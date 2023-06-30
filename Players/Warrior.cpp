@@ -9,7 +9,7 @@ int Warrior::getAttackStrength() const {
     return (this->Player::getAttackStrength()*2- this->getLevel());
 }
 
-void Warrior::encounterBarFight() {
+void Warrior::encounterBarfight() {
     printBarfightMessage(true);
 }
 

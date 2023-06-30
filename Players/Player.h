@@ -106,7 +106,7 @@ public:
     /*
     * Player gets into bar fight
     */
-    virtual void encounterBarFight();
+    virtual void encounterBarfight();
 
     /*
    * Player falls into Well

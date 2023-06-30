@@ -29,9 +29,9 @@ public:
     int getAttackStrength() const override;
 
     /*
-     * handles barfight encounter for Warrior
+     * handles Barfight encounter for Warrior
      */
-    void encounterBarFight() override;
+    void encounterBarfight() override;
 
 
     /*

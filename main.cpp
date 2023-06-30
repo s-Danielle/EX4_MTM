@@ -7,7 +7,7 @@
 int main(){
     Mtmchkin *game=nullptr;
     try{
-        game=new Mtmchkin("cards.txt");
+        game=new Mtmchkin("deck.txt");
         while(game->isGameOver()){
             game->playRound();
             game->printLeaderBoard();

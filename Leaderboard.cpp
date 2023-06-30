@@ -44,7 +44,7 @@ std::vector<std::shared_ptr<Player>> Leaderboard::getLeaderBoard() const
 	for(auto it=m_losers.rbegin(); it!=m_losers.rend(); ++it){
 		leaderBoard.push_back(*it);
 	}
-	;
+	return leaderBoard;
 }
 
 

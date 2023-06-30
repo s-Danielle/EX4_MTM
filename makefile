@@ -1,10 +1,10 @@
 # Compiler
 CXX = g++
 # Compiler flags
-CXXFLAGS = -std=c++11 -Wall -Werror -pedantic-errors
+CXXFLAGS = -std=c++11 -Wall -Werror -pedantic-errors -g
 
 # Target executable
-TARGET = program
+TARGET=program
 
 # Source files
 SRCS = main.cpp Mtmchkin.cpp StringUtils.cpp \
@@ -13,7 +13,7 @@ SRCS = main.cpp Mtmchkin.cpp StringUtils.cpp \
         Cards/Barfight.cpp Cards/Battle.cpp Cards/Card.cpp \
         Cards/Dragon.cpp Cards/Gremlin.cpp Cards/Mana.cpp \
         Cards/Merchant.cpp Cards/Treasure.cpp Cards/Well.cpp Cards/Witch.cpp \
-        Leaderboard.cpp utilities.cpp Exception.cpp
+        Leaderboard.cpp utilities.cpp`
 
 # Object files
 OBJS = main.o Mtmchkin.o StringUtils.o \
@@ -22,7 +22,7 @@ OBJS = main.o Mtmchkin.o StringUtils.o \
         Cards/Barfight.o Cards/Battle.o Cards/Card.o \
         Cards/Dragon.o Cards/Gremlin.o Cards/Mana.o \
         Cards/Merchant.o Cards/Treasure.o Cards/Well.o Cards/Witch.o \
-        Leaderboard.o utilities.o Exception.o
+        Leaderboard.o utilities.o 
 
 # Default rule
 all: $(TARGET)

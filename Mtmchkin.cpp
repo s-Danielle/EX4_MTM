@@ -175,7 +175,6 @@ static int getTeamSize()
  */
 static vector<shared_ptr<Player>> createPlayerList(int teamSize)
 {
-	printEnterTeamSizeMessage();
 	vector<shared_ptr<Player>> players;
 	int playersCreated = 0;
 	while(playersCreated<teamSize){

@@ -6,6 +6,6 @@
 #include "../utilities.h"
 
 void Barfight::applyEncounter(Player &player) const {
-    return player.encounterBarFight(); //handles prints
+    return player.encounterBarfight(); //handles prints
 }
 

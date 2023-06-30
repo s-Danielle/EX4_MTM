@@ -7,7 +7,7 @@
  * this course makes me go AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA some times,
  * but mama didn't raise no quitter.
 */
-int countWords(std::string& str)
+int countWords(const std::string& str)
 {
 	int count = 0;
 	bool inWord = false;

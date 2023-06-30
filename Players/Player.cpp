@@ -87,7 +87,7 @@ bool Player::pay(int price) {
     return true;
 }
 
-void Player::encounterBarFight() {
+void Player::encounterBarfight() {
     printBarfightMessage(false);
     damage(10);
 }
