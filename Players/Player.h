@@ -16,11 +16,22 @@ public:
     static const int DEFAULT_COINS =10;
     static const int DEFAULT_FORCE_POINTS=5;
     static const int MAX_NAME_LEN=15;
+    static const int MAX_LEVEL=10;
     /*
      * Increases player level by 1 up to level 10
      * above level 10 does nothing
      */
     void levelUp();
+
+    /*
+  ==============you've got mail!================
+    i added this method.
+    zohar <3.
+
+     * @returns true if player is a winner and false if not
+     * player is a winner if he is level 10
+     */
+    bool isWinner() const;
 
     /*
      * @returns player level

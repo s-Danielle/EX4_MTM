@@ -38,12 +38,15 @@ int Player::getCoins() const {
 }
 
 void Player::levelUp() {
-    if(m_level<10){
+    if(m_level<MAX_LEVEL){
         //==========you've got mail!================
-        // 10 should be a static const member variable.
+        // there was a 'magic number' here, so i added a const.
         //  zohar <3.
         m_level++;
     }
+}
+bool Player::isWinner() const {
+    return m_level==MAX_LEVEL;
 }
 
 int Player::getLevel() const {
