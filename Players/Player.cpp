@@ -44,6 +44,9 @@ int Player::getCoins() const {
 
 void Player::levelUp() {
     if(m_level<10){
+        //==========you've got mail!================
+        // 10 should be a static const member variable.
+        //  zohar <3.
         m_level++;
     }
 }

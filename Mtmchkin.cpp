@@ -28,9 +28,13 @@ void Mtmchkin::playRound()
 {
 	printRoundStartMessage(m_numberOfRounds);
 	// for each player how didn't die or win
-	// print start turn message
-	// play card
-	// check if game ended
+	for(auto iterator = m_players.begin(); iterator!=m_players.end(); iterator++){
+		if((*iterator)->isKnockedOut() || (*iterator)->)){
+			continue;
+		}
+		// play card
+		// check if game ended
+	}
 }
 
 
@@ -93,7 +97,7 @@ static vector<unique_ptr<const Card>> createDeck(const std::string &fileName)
 		throw DeckFileInvalidSize();
 		// make sure to not leak memory.
 	}
-	return deck;
+	return deck;	//TODO: make sure it does not cause problems with the unique_ptr
 }
 /**@return: number from standard input.
  * checks if the input is valid, if not, prints an error message and asks for input again.
