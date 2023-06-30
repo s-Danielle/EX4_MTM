@@ -15,7 +15,7 @@ private:
     /*
      * initializes stats
      */
-    static cardStats getWitchStats();
+    static CardStats getWitchStats();
 public:
 
     /**

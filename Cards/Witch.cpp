@@ -4,10 +4,10 @@
 
 #include "Witch.h"
 
-cardStats Witch::getWitchStats() {
-    cardStats stats;
-    stats.m_loot=Witch::WITCH_LOOT;
-    stats.m_damage=Witch::WITCH_DAMAGE;
-    stats.m_force=Witch::WITCH_FORCE;
+CardStats Witch::getWitchStats() {
+    CardStats stats{Witch::WITCH_FORCE,Witch::WITCH_DAMAGE, Witch::WITCH_LOOT};
+//    stats.m_loot=;
+//    stats.m_damage=;
+//    stats.m_force=;
     return stats;
 }

@@ -17,7 +17,7 @@ private:
      */
 
 public:
-    static cardStats getDragonStats();
+    static CardStats getDragonStats();
     /**
      * C'tor
      * new instance of Dragon Card

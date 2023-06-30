@@ -14,7 +14,7 @@ private:
     /*
      * initializes stats
      */
-    static cardStats getGremlinStats();
+    static CardStats getGremlinStats();
 public:
 
     /**
