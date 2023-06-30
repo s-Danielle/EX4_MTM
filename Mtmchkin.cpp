@@ -10,6 +10,12 @@ using std::shared_ptr;
 using std::unique_ptr;
 using std::vector;
 
+static vector<unique_ptr<const Card>> createDeck(const std::string &fileName);
+static int getTeamSize();
+static vector<shared_ptr<Player>> createPlayerList(int teamSize);
+static shared_ptr<Player> createPlayer();
+
+
 /**@param fileName: text file with card list.
  * initializes a game of Mtmchkin.(constructor)
  */
@@ -190,6 +196,7 @@ static vector<shared_ptr<Player>> createPlayerList(int teamSize)
 		}
 		playersCreated++;
 	}
+	return players;
 }
 
 /**@return: a shared_ptr to a player.
