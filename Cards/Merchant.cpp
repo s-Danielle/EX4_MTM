@@ -4,7 +4,7 @@
 
 #include "Merchant.h"
 #include "../utilities.h"
-int getChoiceFromUser(){
+int getChoiceFromUser(){    //i think this could be static
     string input;
     int choice=-1;
     while(choice==-1){
