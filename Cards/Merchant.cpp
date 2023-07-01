@@ -15,13 +15,11 @@ int getChoiceFromUser(){
         catch (std::exception&){
             printInvalidInput();
             choice=-1;
-            std::cout << "please reenter:" << std::endl;
             continue;
         }
         if(!(choice>=0 && choice<=2)){
             choice=-1;
             printInvalidInput();
-            std::cout << "please reenter:" << std::endl;
             continue;
         }
     }
@@ -43,6 +41,7 @@ void Merchant::applyEncounter(Player &player) const {
             }
             else{
                 printMerchantInsufficientCoins(std::cout);
+                printMerchantSummary(std::cout,player.getName(),choice, 0);
                 return;
             }
         case 2://BUFF
@@ -53,6 +52,7 @@ void Merchant::applyEncounter(Player &player) const {
             }
             else{
                 printMerchantInsufficientCoins(std::cout);
+                printMerchantSummary(std::cout,player.getName(),choice, 0);
                 return;
             }
 
