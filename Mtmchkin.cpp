@@ -94,6 +94,7 @@ int Mtmchkin::getNumberOfRounds() const
  */
 static vector<unique_ptr<const Card>> createDeck(const std::string &fileName)
 {
+	printStartGameMessage();
 	std::ifstream file(fileName);
 	if (!file.is_open())
 	{
@@ -138,7 +139,7 @@ static vector<unique_ptr<const Card>> createDeck(const std::string &fileName)
 		throw DeckFileInvalidSize();
 		// make sure to not leak memory.
 	}
-	printStartGameMessage();
+
 	return deck;	//TODO: make sure it does not cause problems with the unique_ptr
 }
 /**@return: number from standard input.

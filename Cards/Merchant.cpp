@@ -4,7 +4,7 @@
 
 #include "Merchant.h"
 #include "../utilities.h"
-int getChoiceFromUser(){
+int getChoiceFromUser(){    //i think this could be static
     string input;
     int choice=-1;
     while(choice==-1){
@@ -15,13 +15,13 @@ int getChoiceFromUser(){
         catch (std::exception&){
             printInvalidInput();
             choice=-1;
-            std::cout << "please reenter:" << std::endl;
+            //std::cout << "please reenter:" << std::endl; 
             continue;
         }
         if(!(choice>=0 && choice<=2)){
             choice=-1;
             printInvalidInput();
-            std::cout << "please reenter:" << std::endl;
+            //std::cout << "please reenter:" << std::endl;
             continue;
         }
     }
