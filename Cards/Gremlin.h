@@ -8,7 +8,7 @@
 
 class Gremlin : public Battle{
 private:
-    static const int GREMLIN_FORCE= 5;
+    static const int GREMLIN_FORCE= 6;//TODO: put it back to 5 after testing
     static const int GREMLIN_DAMAGE =10;
     static const int GREMLIN_LOOT= 2;
 public:
