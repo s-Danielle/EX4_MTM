@@ -34,6 +34,7 @@ void Merchant::applyEncounter(Player &player) const {
     switch (choice) {
         case 0://NOTHING
             printMerchantSummary(std::cout,player.getName(),choice, 0);
+            return;
         case 1://HEAL
             if(player.pay(HEAL_COST)){
                 player.heal(HEAL_AMOUNT);//TODO
@@ -42,7 +43,7 @@ void Merchant::applyEncounter(Player &player) const {
             else{
                 printMerchantInsufficientCoins(std::cout);
             }
-            break;
+            return;
         case 2://BUFF
             if(player.pay(BUFF_COST)){
                 player.buff(BUFF_AMOUNT);
@@ -51,7 +52,7 @@ void Merchant::applyEncounter(Player &player) const {
             else{
                 printMerchantInsufficientCoins(std::cout);
             }
-            break;
+            return;
         default://IF YOU HAVE ISSUES CHECK HERE
             return;
     }
