@@ -3,12 +3,12 @@
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
 
-class Exception : public std::logic_error
+class Exception : public std::runtime_error
 {
 	public:
 		
 		Exception()=default;
-		explicit Exception(std::string message): std::logic_error(message){};
+		explicit Exception(std::string message): std::runtime_error(message){};
 		Exception(const Exception& other)=default;
 		~Exception()=default;
 };
