@@ -14,6 +14,8 @@ Battle::CardStats Dragon::getDragonStats() {
 }
 
 std::ostream &Dragon::print(std::ostream &os) const {
-    printMonsterDetails(os,this->m_stats.m_force,this->m_stats.m_damage, this->m_stats.m_loot, true);
+    printCardDetails(os, this->m_name);
+    printMonsterDetails(os, this->m_stats.m_force, this->m_stats.m_damage, this->m_stats.m_loot, true);
+    printEndOfCardDetails(os);
     return os;
 }
