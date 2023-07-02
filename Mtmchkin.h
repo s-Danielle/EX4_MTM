@@ -26,6 +26,7 @@ public:
     explicit Mtmchkin(const std::string &fileName);
 
     ~Mtmchkin() = default;
+    //we dont want to allow copying of the game.
     Mtmchkin(const Mtmchkin &mtmchkin) = delete;
     Mtmchkin &operator=(const Mtmchkin &mtmchkin) = delete;
     

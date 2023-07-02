@@ -3,27 +3,27 @@
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
 
-class Exception : public std::exception
+class Exception : public std::logic_error
 {
 	public:
-		const char* what() const noexcept override { return m_message.c_str();}
+		//const char* what() const noexcept override { return m_message.c_str();}
 		Exception()=default;
-		explicit Exception(std::string message): m_message(message){};
+		explicit Exception(std::string message): std::logic_error(message){};
 		Exception(const Exception& other)=default;
 		~Exception() override=default;
 	protected:
-		std::string m_message;
+		//std::string m_message;
 };
 
 class DeckFileNotFound : public Exception
 {
 	public:
-	explicit DeckFileNotFound(){m_message="Deck File Error: File not found";};
+	explicit DeckFileNotFound():Exception("Deck File Error: File not found"){};
 };
 class DeckFileFormatError : public Exception
 {
 	public:
-	explicit DeckFileFormatError(int lineNum): lineNum(lineNum) { m_message = "Deck File Error: File format error in line "+ std::to_string(lineNum); };
+	explicit DeckFileFormatError(int lineNum):Exception("Deck File Error: File format error in line "+ std::to_string(lineNum)), lineNum(lineNum) {};
 
 	private:
 		int lineNum;
@@ -32,30 +32,30 @@ class DeckFileFormatError : public Exception
 class DeckFileInvalidSize : public Exception
 {
 	public:
-	explicit DeckFileInvalidSize(){ m_message = "Deck File Error: Deck size is invalid"; };
+	explicit DeckFileInvalidSize(): Exception("Deck File Error: Deck size is invalid"){};
 };
  class InvalidTeamSize : public Exception
  {
  	public:
- 	explicit InvalidTeamSize(){ m_message = "Invalid team size"; };
+ 	explicit InvalidTeamSize():Exception("Invalid team size"){};
  };
 
  class InvalidPlayerName : public Exception
  {
  	public:
- 	explicit InvalidPlayerName(){ m_message = "Invalid player name"; };
+ 	explicit InvalidPlayerName():Exception("Invalid player name"){};
  };
 
  class InvalidPlayerClass : public Exception
  {
  	public:
- 	explicit InvalidPlayerClass(){ m_message = "Invalid player class"; };
+ 	explicit InvalidPlayerClass():Exception("Invalid player class"){};
  };
 
  class InvalidInput : public Exception //
  {
  	public:
- 	explicit InvalidInput(){ m_message = "Invalid input"; };
+ 	explicit InvalidInput():Exception("Invalid input"){};
  };
  
 #endif //EXCEPTION_H
