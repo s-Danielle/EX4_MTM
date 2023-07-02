@@ -49,6 +49,7 @@ Card* createNewCard(const std::string &type) {
 
 std::ostream &Card::print(std::ostream &os) const {
     printCardDetails(os, this->m_name);
+    printEndOfCardDetails(os);//it was needed. zohar
     return os;
 }
 std::ostream& operator<<(std::ostream& os, const Card& card){

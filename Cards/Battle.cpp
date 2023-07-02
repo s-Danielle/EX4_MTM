@@ -20,6 +20,8 @@ void Battle::applyEncounter( Player & player) const {
 }
 
 std::ostream &Battle::print(std::ostream &os) const {
+    printCardDetails(os,this->m_name); //it was needed. zohar
     printMonsterDetails(os,this->m_stats.m_force,this->m_stats.m_damage, this->m_stats.m_loot);
+    printEndOfCardDetails(os);//it was needed. zohar
     return os;
 }
