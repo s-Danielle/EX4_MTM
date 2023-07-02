@@ -9,7 +9,7 @@
 class Witch :public Battle{
 
 private:
-    static const int WITCH_FORCE= 10; //TODO: put it back to 11 after testing
+    static const int WITCH_FORCE= 11; //TODO: put it back to 11 after testing
     static const int WITCH_DAMAGE= 10;
     static const int WITCH_LOOT= 2;
 
