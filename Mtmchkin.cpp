@@ -140,7 +140,7 @@ static vector<unique_ptr<const Card>> createDeck(const std::string &fileName)
 		// make sure to not leak memory.
 	}
 
-	return deck;	//TODO: make sure it does not cause problems with the unique_ptr
+	return deck;
 }
 /**@return: number from standard input.
  * checks if the input is valid, if not, prints an error message and asks for input again.
@@ -209,7 +209,7 @@ static vector<shared_ptr<Player>> createPlayerList(int teamSize)
 	}
 	return players;
 }
-//TODO:----YOUVE GOT MAIL-----//
+//TODO:----YOU'VE GOT MAIL-----//
 //I switched the location of the "printInsertPlayerMessage();"
 //to the function above /\ from the strangely familiar named function below \/
 // (createPlayer is trying really hard not to be createNewPlayer)
