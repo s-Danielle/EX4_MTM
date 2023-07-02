@@ -1,4 +1,4 @@
-#include <exception>
+#include <stdexcept>
 #include <string>
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
@@ -6,13 +6,11 @@
 class Exception : public std::logic_error
 {
 	public:
-		//const char* what() const noexcept override { return m_message.c_str();}
+		
 		Exception()=default;
 		explicit Exception(std::string message): std::logic_error(message){};
 		Exception(const Exception& other)=default;
-		~Exception() override=default;
-	protected:
-		//std::string m_message;
+		~Exception()=default;
 };
 
 class DeckFileNotFound : public Exception
